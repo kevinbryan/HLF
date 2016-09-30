@@ -81,6 +81,8 @@
 				<?php endif; ?>
 			<?php endif; ?>
 		</a>
+		<h2>LOREM IPSUM DOLOR</h2>
+		<h3>at Slimbridge Wetland Centre</h3>
 	<?php endif; ?>
 	<?php
 	/**

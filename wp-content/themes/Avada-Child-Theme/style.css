@@ -7,3 +7,11 @@ Template: Avada
 Version: 1.0.0
 Text Domain:  Avada
 */
+.fusion-header-wrapper .fusion-logo {
+ 	float:none;
+ 	margin-left:auto;
+ 	margin-right:auto;
+ 	width:200px;
+ 	text-align: center;
+ }
+
