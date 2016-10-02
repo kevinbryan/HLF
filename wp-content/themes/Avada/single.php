@@ -23,6 +23,27 @@
 					<?php if ( 0 < avada_number_of_featured_images() || get_post_meta( $post->ID, 'pyre_video', true ) ) : ?>
 						<?php Avada()->images->set_grid_image_meta( array( 'layout' => strtolower( 'large' ), 'columns' => '1' ) ); ?>
 						<div class="fusion-flexslider flexslider fusion-flexslider-loading post-slideshow fusion-post-slideshow">
+						<?php if ( 'below' == Avada()->settings->get( 'blog_post_title' ) ) : ?>
+				<?php echo avada_render_post_title( $post->ID, false, '', '2' ); ?>
+			<?php endif; ?>
+				<?php if ( ( Avada()->settings->get( 'author_info' ) && 'no' != get_post_meta( $post->ID, 'pyre_author_info', true ) ) || ( ! Avada()->settings->get( 'author_info' ) && 'yes' == get_post_meta( $post->ID, 'pyre_author_info', true ) ) ) : ?>
+					<div class="about-author">
+						<?php ob_start(); ?>
+						<?php the_author_posts_link(); ?>
+						<?php $title = sprintf( __( 'About the Author: %s', 'Avada' ), ob_get_clean() ); ?>
+						<?php echo Avada()->template->title_template( $title, '3' ); ?>
+						<div class="about-author-container">
+							<div class="avatar">
+								<?php echo get_avatar( get_the_author_meta( 'email' ), '72' ); ?>
+							</div>
+							<div class="description">
+								<?php the_author_meta( 'description' ); ?>
+							</div>
+						</div>
+					</div>
+				<?php endif; ?>
+				<div class="wrap-bg"></div>
+			
 							<ul class="slides">
 								<?php if ( get_post_meta( $post->ID, 'pyre_video', true ) ) : ?>
 									<li>
@@ -72,9 +93,7 @@
 				<?php endif; ?>
 			<?php endif; ?>
 
-			<?php if ( 'below' == Avada()->settings->get( 'blog_post_title' ) ) : ?>
-				<?php echo avada_render_post_title( $post->ID, false, '', '2' ); ?>
-			<?php endif; ?>
+			
 			<div class="post-content">
 				<?php the_content(); ?>
 				<?php avada_link_pages(); ?>

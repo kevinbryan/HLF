@@ -66,7 +66,7 @@
 			<?php if ( Avada()->settings->get( 'blog_post_title' ) ) : ?>
 				<?php echo avada_render_post_title( $post->ID, false ); ?>
 			<?php elseif ( Avada()->settings->get( 'disable_date_rich_snippet_pages' ) ) : ?>
-				<span class="entry-title" style="display: none;"><?php the_title(); ?></span>
+				
 			<?php endif; ?>
 			<div class="post-content">
 				<?php echo avada_get_sermon_content(); ?>

@@ -54,3 +54,56 @@
         }
     }
 }
+
+// ---------------------------------------
+// Blog Article
+// ---------------------------------------
+
+.single-post {
+#main{
+	.entry-title {
+		position: absolute;
+	    bottom: 0;
+	    left: 50%;
+	    z-index: 4;
+	    color: #fff;
+	    text-transform: uppercase;
+	    font-size: 72px !important;
+	    width: 760px;
+	    text-align: center;
+	    margin-left: -380px;
+	    display: block;
+	}
+
+	.post {
+		background-color: #fff;
+	}
+	.single-navigation {
+		border:none;
+		margin-bottom:20px;
+	}
+
+	.wrap-bg{
+		@include absolute(top 0 left 0 bottom 0 right 0);
+		display:block;
+		z-index:3;
+		background: -moz-linear-gradient(top, transparent 30%, rgba(0,0,0,0.75) 99%, rgba(0,0,0,0.75) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, transparent), color-stop(99%, rgba(0,0,0,0.75)), color-stop(100%, rgba(0,0,0,0.75)));
+    background: -webkit-linear-gradient(top, transparent 30%, rgba(0,0,0,0.75) 99%, rgba(0,0,0,0.75) 100%);
+    background: -o-linear-gradient(top, transparent 30%, rgba(0,0,0,0.75) 99%, rgba(0,0,0,0.75) 100%);
+    background: -ms-linear-gradient(top, transparent 30%, rgba(0,0,0,0.75) 99%, rgba(0,0,0,0.75) 100%);
+    background: linear-gradient(to bottom, transparent 30%, rgba(0,0,0,0.75) 99%, rgba(0,0,0,0.75) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#b3000000', GradientType=0);
+    &:after{
+        @include content-block();
+        @include sprite();
+        @include absolute(left 0 right 0 bottom -13px);
+        @include rotate(1deg);
+        background-position: 0 -60px;
+        background-repeat: repeat-x;
+        height:25px;
+    }
+	
+}
+
+}}
