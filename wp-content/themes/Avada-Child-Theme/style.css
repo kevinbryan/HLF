@@ -1,12 +1,18 @@
-/*
-Theme Name: Avada Child
-Description: Child theme for Avada theme
-Author: ThemeFusion
-Author URI: https://theme-fusion.com
-Template: Avada
-Version: 1.0.0
-Text Domain:  Avada
+/*// -------------------------------------------------
+// Main colours
+// -------------------------------------------------
+
+green: #78ba42
+orange: #f0871f
+blue: #00abcc
+grey: #dae5e8
+light-text-color: #8e9a9e
+text-color: #454b4d
+dark-text-color: #1e2021
+
 */
+
+
 .fusion-header-wrapper .fusion-logo {
  	float: none;
     position: absolute;
