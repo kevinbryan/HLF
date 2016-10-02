@@ -1,19 +1,79 @@
 // ---------------------------------------
 // Header
 // ---------------------------------------
-@media screen and (min-width:801px){
-
-.fusion-header-wrapper {
-    .fusion-logo {
-        float: none;
-        position: absolute;
-        left: 50%;
-        margin-left: -100px;
-        width: 200px;
-        text-align: center;
+h1,h2,h3,h4 {
+    font-style: normal;
+    font-weight: normal;
+}
+.fusion-header {
+    position:relative;
+    &:after{
+        @include content-block();
+        @include sprite();
+        @include absolute(left 0 right 0 bottom -6px);
+        background-position: 0 -20px;
+        background-repeat: repeat-x;
+        height:6px;
     }
-    .fusion-main-menu {
-        width: 100%;
+
+    h2,
+    h3 {
+        color: $white;
+        
+    }
+    h2{
+        font-family: Berthold, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-size: 40px;
+        line-height: 1;
+        margin-top:25px;
+        margin-bottom: 5px;
+    }
+    h3{
+        font-size: 16px;
+        line-height: 1.5625;
+        margin-bottom: 0;
+        opacity: .8;
+        text-transform: uppercase;
+    }
+
+    .fusion-main-menu > ul > li > a {
+        text-transform: uppercase;
+    }
+    .fusion-main-menu > ul > li:nth-child(even) {
+        float:right;
+    }
+    .fusion-main-menu > ul > li {
+        padding-right: 7.5%;
+        padding-left: 7.5%;
+    }
+    .fusion-main-menu .current_page_item > a,
+    .fusion-main-menu > ul > li > a:hover {
+        border-color: transparent;
+        position: relative;
+        &:after {
+            @include content-block();
+            @include sprite();
+            @include absolute(left 0 right 0 top -3px);
+            background-position: 0 -90px;
+            height:3px;
+        }
     }
 }
+
+
+@media screen and (min-width:801px){
+
+    .fusion-header {
+        .fusion-logo {
+            float: none;
+            @include absolute(left 50%);
+            margin-left: -200px;
+            width: 400px;
+            text-align: center;
+            z-index: 1;
+        }
+        .fusion-main-menu {
+            width: 100%;
+        }
+    }
 }

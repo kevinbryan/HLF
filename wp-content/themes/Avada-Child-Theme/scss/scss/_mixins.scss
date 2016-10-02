@@ -56,48 +56,10 @@ $path-ui-img: "../img/ui" !default;
 
 @mixin sprite{
   background-image: url("../img/ui/sprite.png");
-  background-image: linear-gradient(transparent, transparent), url("../img/ui/sprite.svg");
+  background-image: linear-gradient(transparent, transparent), url("img/sprite.svg");
   background-repeat: no-repeat;
 }
 
-@mixin sprite-bg {
-  background-image: url("../img/ui/bg.png");
-  background-image: linear-gradient(transparent, transparent), url("../img/ui/bg.svg");
-  background-repeat: repeat-x;
-  background-color: transparent;
-}
-
-@mixin sprite-grung {
-  background-image: url("../img/ui/grung.png");
-  background-image: linear-gradient(transparent, transparent), url("../img/ui/grung.svg");
-  background-repeat: repeat-x;
-  background-color: transparent;
-}
-@mixin sprite-circles {
-    background-image: url("../img/ui/circles.png");
-    background-image: linear-gradient(transparent, transparent), url("../img/ui/circles.svg");
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-@mixin sprite-map {
-    background-image: url(#{$path-ui-img}/map.png);
-    background-image: linear-gradient(transparent, transparent), url(#{$path-ui-img}/map.svg);
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-@mixin sprite-header {
-  background-image: url("../img/ui/header.png");
-  background-image: linear-gradient(transparent, transparent), url("../img/ui/header.svg");
-  background-repeat: no-repeat;
-  background-color: transparent;
-}
-@mixin sprite-logo {
-  background-image: url("../img/ui/logo.png");
-    background-image: linear-gradient(transparent, transparent), url("../img/ui/logo.svg");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-}
 
 
 // ---------------------------------------
