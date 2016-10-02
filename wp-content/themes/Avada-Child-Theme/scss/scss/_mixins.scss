@@ -101,7 +101,6 @@ $path-ui-img: "../img/ui" !default;
     @include inline-block-middle;
     @include sprite-circles;
     @include size($size, $size);
-    @include verveineregular;
     font-size:$font-large+px;
     background-position: -$size 0;
     color: $white;
@@ -209,21 +208,21 @@ $path-ui-img: "../img/ui" !default;
 // FONTS
 // ---------------------------------------
 
-@mixin proxima_nova_regular {
-  font-family: "proxima_nova_regular", "Arial", "Helvetica", sans-serif;
+@mixin proxima {
+  font-family: "Proxima", "Arial", "Helvetica", sans-serif;
 }
 
-@mixin proxima_nova_semibold {
-  font-family: "proxima_nova_semibold", "Arial", "Helvetica", sans-serif;
+@mixin proxima-semibold {
+  font-family: "Proxima-semibold", "Arial", "Helvetica", sans-serif;
 }
 
-@mixin block_be_regularregular {
-  font-family: "block_be_regularregular", "Arial", "Helvetica", sans-serif;
+@mixin berthold {
+  font-family: "Berthold", "Arial", "Helvetica", sans-serif;
   letter-spacing: .005em;
 }
 
-@mixin verveineregular {
-  font-family: "verveineregular", "Arial", "Helvetica", sans-serif;
+@mixin verveine {
+  font-family: "Vervieine", "Arial", "Helvetica", sans-serif;
   letter-spacing: -.005em;
 }
 

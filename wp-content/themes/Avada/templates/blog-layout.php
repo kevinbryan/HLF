@@ -213,15 +213,15 @@ printf( '<div id="posts-container" class="%sfusion-blog-archive fusion-clearfix"
 								echo '</div>';
 
 								// Render comments for grid/timeline layouts
-								echo '<div class="fusion-alignright">';
+								echo '<div class="blog-comment"><span class="icon--circle-orange">';
 									if ( Avada()->settings->get( 'post_meta_comments' ) ) {
 										if ( ! post_password_required( get_the_ID() ) ) {
-											comments_popup_link('<i class="fusion-icon-bubbles"></i>&nbsp;' . __( '0', 'Avada' ), '<i class="fusion-icon-bubbles"></i>&nbsp;' . __( '1', 'Avada' ), '<i class="fusion-icon-bubbles"></i>&nbsp;' . '%' );
+											comments_popup_link('' . __( '0', 'Avada' ), '' . __( '1', 'Avada' ), '' . '%' );
 										} else {
-											printf( '<i class="fusion-icon-bubbles"></i>&nbsp;%s', __( 'Protected', 'Avada' ) );
+											printf( '', __( 'Protected', 'Avada' ) );
 										}
 									}
-								echo '</div>';
+								echo '</span> comments</div>';
 							} else {
 								// Render all meta data for medium and large layouts
 								if ( $blog_layout == 'large' || $blog_layout == 'medium' ) {

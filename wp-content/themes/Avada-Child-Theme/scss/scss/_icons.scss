@@ -6,7 +6,6 @@
 	height: 30px;
 }
 
-
 .icon-social {
 	@extend %icon;
 	&:hover,
@@ -23,5 +22,14 @@
 }
 .icon-social--twitter {
 	background-position: -70px -110px;
-
 }
+
+.icon--circle-orange {
+	@include sprite;
+	display:inline-block;
+	width: 20px;
+	height: 20px;
+	background-position: -110px -110px;
+}
+
+
