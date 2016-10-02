@@ -1,3 +1,18 @@
 // ---------------------------------------
 // Main Footer
 // ---------------------------------------
+
+.fusion-footer {
+	position:relative;
+    &:after{
+        @include content-block();
+        @include sprite();
+        @include absolute(left 0 right 0 top -6px);
+        background-position: 0 -40px;
+        background-repeat: repeat-x;
+        height:6px;
+    }
+    li {
+    	margin-left:10px;
+    }
+}

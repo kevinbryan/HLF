@@ -1,18 +1,27 @@
 %icon {
 	@include sprite;
 	@include hide-text;
-	width: 20px;
-	height: 20px;
+	display:inline-block;
+	width: 30px;
+	height: 30px;
 }
 
 
-.icon-- {
-
-	background-position: 0px 0px;
-
+.icon-social {
+	@extend %icon;
 	&:hover,
 	&:focus {
-		background-position: 0px 0px;
+		opacity: .6;
 	}
+}
+
+.icon-social--youtube {
+	background-position: 0px -110px;
+}
+.icon-social--facebook {
+	background-position: -35px -110px;
+}
+.icon-social--twitter {
+	background-position: -70px -110px;
 
 }
