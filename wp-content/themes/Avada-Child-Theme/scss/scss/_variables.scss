@@ -1,0 +1,85 @@
+// -------------------------------------------------
+// Main breakpoints
+// -------------------------------------------------
+
+$break-vsmall:			em(320) !default;
+$break-small:			em(568) !default;
+$break-mobile:			em(767) !default;
+$break-medium:			em(768) !default;
+$break-tablet:			em(1024) !default;
+$break-large:			em(1365) !default;
+
+// -------------------------------------------------
+// Font Sizes
+// -------------------------------------------------
+
+$font-xsmall: 12 !default;
+$font-small: 14 !default;
+$font-base: 16 !default;
+$font-medium: 18 !default;
+$font-big: 20 !default;
+$font-large: 24 !default;
+$font-xlarge: 32 !default;
+$font-xxlarge: 44 !default;
+$font-xxxlarge: 58 !default;
+$font-largetitle: 80 !default;
+$font-herotitle: 100 !default;
+
+// -------------------------------------------------
+// Type Settings
+// -------------------------------------------------
+
+$base-font-size:		$font-base !default;
+$base-line-height:		1 !default;
+$base-size: 			5 !default;
+
+// -------------------------------------------------
+// Main colours
+// -------------------------------------------------
+
+$light-green: #9cd66d !default;
+$green: #78ba42 !default;
+$dark-green: #5d9c2a !default;
+$light-yellow: #fed839 !default;
+$yellow: #edba21 !default;
+$dark-yellow: #e0a61b !default;
+$light-orange: #f67642 !default;
+$orange: #f0871f !default;
+$dark-orange: #cd5625 !default;
+$light-red: #f96b75 !default;
+$red: #ce2d26 !default;
+$dark-red: #831603 !default;
+$light-purple: #a092b4 !default;
+$purple: #4f0b7b !default;
+$dark-purple: #321352 !default;
+$light-pink: #eb78ba !default;
+$pink: #e0119d !default;
+$dark-pink: #962061 !default;
+$light-sledge: #c6bf70 !default;
+$sledge: #a09b59 !default;
+$dark-sledge: #4b471a !default;
+$light-brown: #e16801 !default;
+$brown: #cc5e00 !default;
+$dark-brown: #ad5000 !default;
+$light-blue: #0092b2 !default;
+$blue: #00abcc !default;
+$dark-blue: #078eac !default;
+$v-dark-blue: #067b95 !default;
+$vv-dark-blue: #024a5a !default;
+$vv-light-grey: #f7fafb !default;
+$v-light-grey: #f0f6f7 !default;
+$light-grey: #e9f1f5 !default;
+$grey: #dae5e8 !default;
+$grey-blue: #a3bbc3 !default;
+$dark-grey-blue: #8aa9b4 !default;
+$white: #fff !default;
+$black: #000 !default;
+
+
+// -------------------------------------------------
+// Text Colours
+// -------------------------------------------------
+
+$light-text-color: #8e9a9e !default;
+$text-color: #454b4d !default;
+$dark-text-color: #1e2021 !default;

@@ -1,27 +1,3 @@
-/*// -------------------------------------------------
-// Main colours
-// -------------------------------------------------
+.icon--{background-position:0px 0px}.icon--:hover,.icon--:focus{background-position:0px 0px}@media screen and (min-width: 801px){.fusion-header-wrapper .fusion-logo{float:none;position:absolute;left:50%;margin-left:-100px;width:200px;text-align:center}.fusion-header-wrapper .fusion-main-menu{width:100%}}
 
-green: #78ba42
-orange: #f0871f
-blue: #00abcc
-grey: #dae5e8
-light-text-color: #8e9a9e
-text-color: #454b4d
-dark-text-color: #1e2021
-
-*/
-
-
-.fusion-header-wrapper .fusion-logo {
- 	float: none;
-    position: absolute;
-    left: 50%;
-    margin-left: -100px;
-    width: 200px;
-    text-align: center;
- }
-
-.fusion-header-wrapper .fusion-main-menu {
-    width: 100%;
-}
+/*# sourceMappingURL=style.css.map */

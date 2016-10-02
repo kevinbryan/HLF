@@ -1,0 +1,26 @@
+.icon-- {
+    background-position: 0px 0px
+}
+
+.icon--:hover,
+.icon--:focus {
+    background-position: 0px 0px
+}
+
+
+@media screen and (min-width:801px){
+	.fusion-header-wrapper .fusion-logo {
+	    float: none;
+	    position: absolute;
+	    left: 50%;
+	    margin-left: -100px;
+	    width: 200px;
+	    text-align: center
+	}
+
+	.fusion-header-wrapper .fusion-main-menu {
+	    width: 100%
+	}
+}
+
+/*# sourceMappingURL=styles.css.map */

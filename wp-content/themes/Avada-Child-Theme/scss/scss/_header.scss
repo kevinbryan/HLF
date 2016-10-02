@@ -1,0 +1,19 @@
+// ---------------------------------------
+// Header
+// ---------------------------------------
+@media screen and (min-width:801px){
+
+.fusion-header-wrapper {
+    .fusion-logo {
+        float: none;
+        position: absolute;
+        left: 50%;
+        margin-left: -100px;
+        width: 200px;
+        text-align: center;
+    }
+    .fusion-main-menu {
+        width: 100%;
+    }
+}
+}

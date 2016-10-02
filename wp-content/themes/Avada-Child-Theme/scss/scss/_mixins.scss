@@ -1,0 +1,892 @@
+// ---------------------------------------
+//  POSITIONING
+// ---------------------------------------
+
+@mixin position($position, $args: ()) {
+  $offsets: top right bottom left;
+  position: $position;                                               
+
+  @each $offset in $offsets {                                        
+    $index: index($args, $offset);                                   
+
+    @if $index {                                                     
+      @if $index == length($args) {                                  
+        #{$offset}: 0;                                               
+      }
+      @else {                                                        
+        $next: nth($args, $index + 1);                               
+        @if is-valid-length($next) {                                 
+          #{$offset}: $next;                                        
+        }
+        @else if index($offsets, $next) {                            
+          #{$offset}: 0;                                             
+        }
+        @else {                                                      
+          @warn "Invalid value `#{$next}` for offset `#{$offset}`."; 
+        }
+      }
+    }
+  }
+}
+
+@function is-valid-length($value) {
+  @return (type-of($value) == "number" and not unitless($value))
+       or (index(auto initial inherit 0, $value) != false);
+}
+
+// Shorthands
+
+@mixin absolute($args: ()) {
+  @include position(absolute, $args);
+}
+
+@mixin fixed($args: ()) {
+  @include position(fixed, $args);
+}
+
+@mixin relative($args: ()) {
+  @include position(relative, $args);
+}
+
+// ---------------------------------------
+// SPRITES
+// ---------------------------------------
+
+$path-ui-img: "../img/ui" !default;
+
+@mixin sprite{
+  background-image: url("../img/ui/sprite.png");
+  background-image: linear-gradient(transparent, transparent), url("../img/ui/sprite.svg");
+  background-repeat: no-repeat;
+}
+
+@mixin sprite-bg {
+  background-image: url("../img/ui/bg.png");
+  background-image: linear-gradient(transparent, transparent), url("../img/ui/bg.svg");
+  background-repeat: repeat-x;
+  background-color: transparent;
+}
+
+@mixin sprite-grung {
+  background-image: url("../img/ui/grung.png");
+  background-image: linear-gradient(transparent, transparent), url("../img/ui/grung.svg");
+  background-repeat: repeat-x;
+  background-color: transparent;
+}
+@mixin sprite-circles {
+    background-image: url("../img/ui/circles.png");
+    background-image: linear-gradient(transparent, transparent), url("../img/ui/circles.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+@mixin sprite-map {
+    background-image: url(#{$path-ui-img}/map.png);
+    background-image: linear-gradient(transparent, transparent), url(#{$path-ui-img}/map.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+@mixin sprite-header {
+  background-image: url("../img/ui/header.png");
+  background-image: linear-gradient(transparent, transparent), url("../img/ui/header.svg");
+  background-repeat: no-repeat;
+  background-color: transparent;
+}
+@mixin sprite-logo {
+  background-image: url("../img/ui/logo.png");
+    background-image: linear-gradient(transparent, transparent), url("../img/ui/logo.svg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+
+// ---------------------------------------
+// WAVE
+// ---------------------------------------
+
+@mixin wave {
+  @include sprite-bg;
+  @include size(7px, 100%);
+  content: '';
+  display: block;
+}
+
+@mixin wave--top {
+  position: relative;
+
+  &:before {
+    @include wave;
+    @include absolute(top 0 right 0 left 0);
+  }
+
+}
+
+@mixin wave--bottom {
+  position: relative;
+
+  &:after {
+    @include wave;
+    @include absolute(bottom 0 right 0 left 0);
+  }
+
+}
+
+// ---------------------------------------
+// CIRCLES
+// ---------------------------------------
+
+@mixin circles($size) {
+    @include inline-block-middle;
+    @include sprite-circles;
+    @include size($size, $size);
+    @include verveineregular;
+    font-size:$font-large+px;
+    background-position: -$size 0;
+    color: $white;
+    line-height: $size;
+    margin-right: rem(10);
+    text-align: center;
+}
+
+// ---------------------------------------
+// GRUNG
+// ---------------------------------------
+
+@mixin grung {
+    @include sprite-grung;
+    @include size(4px, 100%);
+    @include content-block;
+    z-index: 1;
+}
+
+@mixin grung-bottom ($pos) {
+    position: relative;
+    &:after {
+        @include grung;
+        @include absolute(bottom 0 right 0 left 0);
+        background-position: $pos;
+    }
+}
+
+@mixin grung-top ($pos) {
+    position: relative;
+    &:before {
+        @include grung;
+        @include absolute(top 0 right 0 left 0);
+        @include rotate(180deg);
+        background-position: $pos;
+    }
+}
+
+
+
+
+// ---------------------------------------
+// GRUNG BOX
+// ---------------------------------------
+
+@mixin mask{
+    position: relative;
+
+    &:before {
+        @include absolute(top 0 right 0 bottom 0 left 0);
+        @include content-block;
+        background-repeat: no-repeat;
+        background-position: top center;        
+        background-size: 100% 100%;
+        z-index: 1;
+    }
+}
+
+@mixin mask-box--white{
+    @include mask;
+    &:before {
+        background-image: url(../img/ui/mask-grung-box-white.png);
+        background-image: url(../img/ui/mask-grung-box-white.svg);
+    }
+}
+@mixin mask-box--grey{
+    @include mask;
+    &:before {
+        background-image: url(../img/ui/mask-grung-box-grey.png);
+        background-image: url(../img/ui/mask-grung-box-grey.svg);
+    }
+}
+
+@mixin mask-box-small--white{
+    @include mask;
+    &:before {
+        background-image: url(../img/ui/mask-grung-box-small-white.png);
+        background-image: url(../img/ui/mask-grung-box-small-white.svg);
+    }
+}
+@mixin mask-box-small--grey{
+    @include mask;
+    &:before {
+        background-image: url(../img/ui/mask-grung-box-small-grey.png);
+        background-image: url(../img/ui/mask-grung-box-small-grey.svg);
+    }
+}
+@mixin mask-box-big--white{
+    @include mask;
+    &:before {
+        background-image: url(../img/ui/mask-grung-box-big-white.png);
+        background-image: url(../img/ui/mask-grung-box-big-white.svg);
+    }
+}
+@mixin mask-box-big--grey{
+    @include mask;
+    &:before {
+        background-image: url(../img/ui/mask-grung-box-big-grey.png);
+        background-image: url(../img/ui/mask-grung-box-big-grey.svg);
+    }
+}
+
+
+// ---------------------------------------
+// FONTS
+// ---------------------------------------
+
+@mixin proxima_nova_regular {
+  font-family: "proxima_nova_regular", "Arial", "Helvetica", sans-serif;
+}
+
+@mixin proxima_nova_semibold {
+  font-family: "proxima_nova_semibold", "Arial", "Helvetica", sans-serif;
+}
+
+@mixin block_be_regularregular {
+  font-family: "block_be_regularregular", "Arial", "Helvetica", sans-serif;
+  letter-spacing: .005em;
+}
+
+@mixin verveineregular {
+  font-family: "verveineregular", "Arial", "Helvetica", sans-serif;
+  letter-spacing: -.005em;
+}
+
+//  Typography Mixins
+// ---------------------------
+
+// Include as: @include font(font-size,line-height,margin-bottom,context)
+
+@mixin font($font-size,$line-height,$marg-bottom,$context:$font-base) {
+  font-size:  ($font-size / $context) * 1em;
+  line-height: decimal-round($line-height / $font-size);
+  @if $marg-bottom == null {}
+  @elseif $marg-bottom == 0 {margin-bottom:0}
+  @else { margin-bottom: ($marg-bottom / $font-size) * 1em}
+}
+
+// Include as: @include border-bottom(border-size, border-style, border-color, padding-bottom, context)
+@mixin border-bottom($border-size,$border-style,$border-color,$padding-bottom, $context:$font-base) {
+      border-bottom:  ($border-size+px $border-style $border-color);
+      padding-bottom: ((($padding-bottom - $border-size ) / $context ) * 1em)
+}
+
+// Include as: @include border-top(border-size, border-style, border-color, padding-top, context)
+@mixin border-top($border-size,$border-style,$border-color,$padding-top,$context:$font-base) {
+      border-top:  ($border-size+px $border-style $border-color);
+      padding-top: ((($padding-top - $border-size ) / $context ) * 1em)
+}
+
+// ---------------------------------------
+// CLEARFIX
+// ---------------------------------------
+
+@mixin clearfix {
+  *zoom: 1;
+
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+  }
+
+  &:after {
+    clear: both;
+  }
+
+}
+
+// ---------------------------------------
+// IMAGES
+// ---------------------------------------
+
+@mixin img-responsive {
+  max-width: 100%;
+  image-rendering: optimizequality;
+  width: 100%;
+  height: auto;
+}
+
+@mixin img-small {
+  max-width: 100%;
+  image-rendering: optimizequality;
+  width: 100%;
+  height: auto;
+  width: 140px;
+
+  @media screen and (max-width:$break-mobile) {
+    width: 125px;
+  }
+
+}
+
+// ---------------------------------------
+// WRAP
+// ---------------------------------------
+
+@mixin wrap {
+    max-width: 1290px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+// ---------------------------------------
+// WRAP BORDER BOX
+// ---------------------------------------
+
+@mixin wrap--border-box {
+    padding-top:em(30);
+    padding-bottom:em(30);
+    background-color:$white;
+    border-bottom:2px solid $grey;
+    @media screen and (max-width:$break-small) {
+        padding-top:em(20);
+        padding-bottom:em(20);
+    }
+}
+
+// ---------------------------------------
+// FIGURE WRAP BOX
+// ---------------------------------------
+
+@mixin wrap--figure-box {
+    padding:em(20) em(30);
+    background-color:$white;
+    border-bottom:2px solid $grey;
+    margin-top:em(-30);
+    max-width: 700px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position:relative;
+}
+
+// ---------------------------------------
+// Center-align a block level element
+// ---------------------------------------
+
+@mixin center-block() {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+// ---------------------------------------
+// Sizing shortcuts
+// ---------------------------------------
+
+@mixin size($height, $width) {
+    width: $width;
+    height: $height;
+}
+@mixin square($size) {
+    @include size($size, $size);
+}
+
+// ---------------------------------------
+// LIST LINK
+// ---------------------------------------
+
+@mixin list-link {
+  @include clearfix;
+
+  li,
+  dd {
+    display: inline;
+  }
+
+  a {
+    text-decoration: none;
+    float: left;
+  }
+
+}
+
+// ---------------------------------------
+// Placeholder text
+// ---------------------------------------
+
+@mixin placeholder($color) {
+    &::-moz-placeholder {
+    color: $color;
+    }
+    &:-ms-input-placeholder {
+    color: $color;
+    }
+    &::-webkit-input-placeholder {
+    color: $color;
+    }
+}
+
+// ---------------------------------------
+// Text overflow
+// ---------------------------------------
+
+@mixin text-overflow() {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+// ---------------------------------------
+// Layout using inline-block
+// ---------------------------------------
+
+@mixin layout-inline-block {
+  letter-spacing: -.4em;
+
+  > * {
+    display: inline-block;
+    letter-spacing: normal;
+    vertical-align: middle;
+  }
+
+}
+
+// ---------------------------------------
+//  Inline block middle
+// ---------------------------------------
+
+@mixin inline-block-middle {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+// ---------------------------------------
+//  Inline block top
+// ---------------------------------------
+
+@mixin inline-block-top {
+  display: inline-block;
+  vertical-align: top;
+}
+
+// ---------------------------------------
+//  Content Block
+// ---------------------------------------
+
+@mixin content-block {
+  display: block;
+  content: '';
+}
+
+// ---------------------------------------
+// FILTER
+// ---------------------------------------
+
+@mixin filter($filter-type,$filter-amount) {
+  -webkit-filter: $filter-type+unquote('(#{$filter-amount})');
+  -moz-filter: $filter-type+unquote('(#{$filter-amount})');
+  -ms-filter: $filter-type+unquote('(#{$filter-amount})');
+  -o-filter: $filter-type+unquote('(#{$filter-amount})');
+  filter: $filter-type+unquote('(#{$filter-amount})');
+}
+
+// ---------------------------------------
+// CSS3 PROPERTIES
+// ---------------------------------------
+
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    border-radius: $radius;
+}
+
+// Single Corner Border Radius
+@mixin border-top-left-radius($radius) {
+    -webkit-border-top-left-radius: $radius;
+    -moz-border-radius-topleft: $radius;
+    border-top-left-radius: $radius;
+}
+@mixin border-top-right-radius($radius) {
+    -webkit-border-top-right-radius: $radius;
+    -moz-border-radius-topright: $radius;
+    border-top-right-radius: $radius;
+}
+@mixin border-bottom-right-radius($radius) {
+    -webkit-border-bottom-right-radius: $radius;
+    -moz-border-radius-bottomright: $radius;
+    border-bottom-right-radius: $radius;
+}
+@mixin border-bottom-left-radius($radius) {
+    -webkit-border-bottom-left-radius: $radius;
+    -moz-border-radius-bottomleft: $radius;
+    border-bottom-left-radius: $radius;
+}
+
+// Single Side Border Radius
+@mixin border-top-radius($radius) {
+    @include border-top-right-radius($radius);
+    @include border-top-left-radius($radius);
+}
+@mixin border-right-radius($radius) {
+    @include border-top-right-radius($radius);
+    @include border-bottom-right-radius($radius);
+}
+@mixin border-bottom-radius($radius) {
+    @include border-bottom-right-radius($radius);
+    @include border-bottom-left-radius($radius);
+}
+@mixin border-left-radius($radius) {
+    @include border-top-left-radius($radius);
+    @include border-bottom-left-radius($radius);
+}
+
+// ---------------------------------------
+// ANIMATION
+// ---------------------------------------
+
+// Transitions
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+@mixin transform-origin($args...) {
+    -webkit-transform-origin: $args;
+    -ms-transform-origin: $args;
+    transform-origin: $args;
+}
+@mixin transition-delay($transition-delay) {
+    -webkit-transition-delay: $transition-delay;
+    -ms-transition-delay: $transition-delay;
+    transition-delay: $transition-delay;
+}
+@mixin transition-duration($transition-duration) {
+    -webkit-transition-duration: $transition-duration;
+    -ms-transition-duration: $transition-duration;
+    transition-duration: $transition-duration;
+}
+
+// Transformations
+
+@mixin rotate($degrees) {
+    -webkit-transform: rotate($degrees);
+    -ms-transform: rotate($degrees);
+    transform: rotate($degrees);
+    -ms-filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+}
+@mixin scale($ratio) {
+    -webkit-transform: scale($ratio);
+    -ms-transform: scale($ratio);
+    transform: scale($ratio);
+}
+@mixin scaleY($ratio) {
+    -webkit-transform: scaleY($ratio);
+    -ms-transform: scaleY($ratio);
+    transform: scaleY($ratio);
+}
+@mixin scaleX($ratio) {
+    -webkit-transform: scaleX($ratio);
+    -ms-transform: scaleX($ratio);
+    transform: scaleX($ratio);
+}
+@mixin translateY($y) {
+    -webkit-transform: translateY($y);
+    -ms-transform: translateY($y);
+    transform: translateY($y);
+}
+@mixin translateX($x) {
+    -webkit-transform: translateX($x);
+    -ms-transform: translateX($x);
+    transform: translateX($x);
+}
+
+
+@mixin skew($x, $y) {
+    -webkit-transform: skew($x, $y);
+    -moz-transform: skew($x, $y);
+    -ms-transform: skewX($x) skewY($y); // See https://github.com/twitter/bootstrap/issues/4885
+    -o-transform: skew($x, $y);
+    transform: skew($x, $y);
+    -webkit-backface-visibility: hidden; // See https://github.com/twitter/bootstrap/issues/5319
+}
+@mixin translate3d($x, $y, $z) {
+    -webkit-transform: translate3d($x, $y, $z);
+    -moz-transform: translate3d($x, $y, $z);
+    transform: translate3d($x, $y, $z);
+}
+
+
+//  Keyframe animations
+
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@mixin animation($animation, $duration, $delay: 0) {
+    -webkit-animation-delay: $delay;
+    -webkit-animation-duration: $duration;
+    -webkit-animation-name: $animation;
+    -webkit-animation-fill-mode: forwards; /* this prevents the animation from restarting! */
+
+    animation-delay: $delay;
+    animation-duration: $duration;
+    animation-name: $animation;
+    animation-fill-mode: forwards; /* this prevents the animation from restarting! */
+}
+
+
+// ---------------------------------------
+// Backface visibility
+// ---------------------------------------
+
+@mixin backface-visibility($visibility){
+    -webkit-backface-visibility: $visibility;
+    -moz-backface-visibility: $visibility;
+    backface-visibility: $visibility;
+}
+
+// ---------------------------------------
+// Backface clip
+// ---------------------------------------
+
+@mixin background-clip($clip) {
+    -webkit-background-clip: $clip;
+    -moz-background-clip: $clip;
+    background-clip: $clip;
+}
+
+// ---------------------------------------
+// Background sizing
+// ---------------------------------------
+
+@mixin background-size($size) {
+    -webkit-background-size: $size;
+    -moz-background-size: $size;
+    background-size: $size;
+}
+
+// ---------------------------------------
+// Box sizing
+// ---------------------------------------
+
+@mixin box-sizing($boxmodel) {
+    -webkit-box-sizing: $boxmodel;
+    -moz-box-sizing: $boxmodel;
+    box-sizing: $boxmodel;
+}
+
+// ---------------------------------------
+// Use select
+// ---------------------------------------
+
+
+@mixin user-select($select) {
+    -webkit-user-select: $select;
+    -moz-user-select: $select;
+    -ms-user-select: $select;
+    -o-user-select: $select;
+    user-select: $select;
+}
+
+// ---------------------------------------
+// Opacity
+// ---------------------------------------
+
+@mixin opacity($opacity) {
+    opacity: $opacity / 100;
+    .lt-ie9 & { filter: alpha(opacity=$opacity); }
+}
+
+@mixin background-opacity($color, $opacity: 1) {
+    background: $color; /* The Fallback */
+    background: rgba($color, $opacity);
+}
+
+// ---------------------------------------
+// Box shadow
+// ---------------------------------------
+
+@mixin box-shadow($shadow...) {
+   -webkit-box-shadow: $shadow;
+   -moz-box-shadow: $shadow;
+   box-shadow: $shadow;
+}
+
+// ---------------------------------------
+// Bacground Rgb
+// ---------------------------------------
+
+@mixin background-rgba($color, $alpha) {
+    $rgba: rgba($color, $alpha);
+    $ie-hex-str: ie-hex-str($rgba);
+    background-color: $rgba;
+
+    .lt-ie9 & {
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$ie-hex-str},endColorstr=#{$ie-hex-str});
+        zoom: 1;
+    }
+}
+
+// ---------------------------------------
+// Triangle generator
+// ---------------------------------------
+
+@mixin triangle($size, $colour, $direction: up) {
+    width: 0;
+    height: 0;
+    content: '';
+    display: block;
+    border-style: solid;
+
+    @if $direction == up {
+        border-width: 0 $size $size $size;
+        border-color: transparent transparent $colour transparent;
+    }
+    @else if $direction == down {
+        border-width: $size $size 0 $size;
+        border-color: $colour transparent transparent transparent;
+    }
+    @else if $direction == left {
+        border-width: $size $size $size 0;
+        border-color: transparent $colour transparent transparent;
+    }
+    @else if $direction == right {
+        border-width: $size 0 $size $size;
+        border-color: transparent transparent transparent $colour;
+    }
+}
+
+// ---------------------------------------
+// Accessiblilty helpers
+// ---------------------------------------
+
+@mixin visually-hide {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+
+    /*
+     * Extends element to be focusable
+     * when navigated to via the keyboard: h5bp.com/p
+     */
+
+    &.focusable:active,
+    &.focusable:focus {
+        clip: auto;
+        height: auto;
+        margin: 0;
+        overflow: visible;
+        position: static;
+        width: auto;
+    }
+}
+
+@mixin hide-text {
+    font-size:0;
+    line-height:0;
+    text-indent: -9999px;
+}
+
+@mixin hide-text-alt {
+    overflow: hidden;
+    text-indent: 100%;
+    white-space: nowrap;
+}
+
+
+
+// ---------------------------------------
+// Padding and margins
+// ---------------------------------------
+
+
+@mixin padd-bottom($size) {
+  padding-bottom: $size+px; 
+  padding-bottom: rem($size);
+}
+@mixin marg-bottom($size) {
+  margin-bottom: $size+px; 
+  margin-bottom: rem($size);
+}
+@mixin padd-top($size) {
+  padding-top: $size+px; 
+  padding-top: rem($size);
+}
+@mixin marg-top($size) {
+  margin-top: $size+px; 
+  margin-top: rem($size);
+}
+@mixin padd-left($size) {
+  padding-left: $size+px; 
+  padding-left: rem($size);
+}
+@mixin marg-left($size) {
+  margin-left: $size+px; 
+  margin-left: rem($size);
+}
+@mixin padd-right($size) {
+  padding-right: $size+px; 
+  padding-right: rem($size);
+}
+@mixin marg-right($size) {
+  margin-right: $size+px; 
+  margin-right: rem($size);
+}
+
+
+
+
+
+@mixin mobile-padding{
+@media screen and (max-width:$break-large) {
+        padding:30px;
+        padding:30px;
+
+}
+@media screen and (max-width:$break-mobile) {
+    padding:30px 20px;
+    padding:30px 20px;
+}
+}
+@mixin mobile-v-padding{
+@media screen and (max-width:$break-large) {
+        padding-top:30px;
+        padding-bottom:30px;
+
+}
+@media screen and (max-width:$break-mobile) {
+    padding-top:20px;
+    padding-bottom:20px;
+}
+}
+@mixin mobile-h-padding{
+@media screen and (max-width:$break-large) {
+        padding-left:30px;
+        padding-right:30px;
+
+}
+@media screen and (max-width:$break-mobile) {
+    padding-left:20px;
+    padding-right:20px;
+}
+}

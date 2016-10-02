@@ -1,0 +1,73 @@
+// ---------------------------------------
+// Limit decimal places
+// ---------------------------------------
+
+@function decimal-round ($number, $digits: 4, $mode: ceil) {
+    $n: 1;
+    // $number must be a number
+    @if type-of($number) != number {
+        @warn '#{ $number } is not a number.';
+        @return $number;
+    }
+    // $digits must be a unitless number
+    @if type-of($digits) != number {
+        @warn '#{ $digits } is not a number.';
+        @return $number;
+    } @else if not unitless($digits) {
+        @warn '#{ $digits } has a unit.';
+        @return $number;
+    }
+    @for $i from 1 through $digits {
+        $n: $n * 10;
+    }
+    @if $mode == round {
+        @return round($number * $n) / $n;
+    } @else if $mode == ceil {
+        @return ceil($number * $n) / $n;
+    } @else if $mode == floor {
+        @return floor($number * $n) / $n;
+    } @else {
+        @warn '#{ $mode } is undefined keyword.';
+        @return $number;
+    }
+}
+
+// ---------------------------------------
+// Add percentage of white to a color
+// ---------------------------------------
+
+@function tint($color, $percent){
+  @return mix(white, $color, $percent);
+}
+
+// ---------------------------------------
+// Add percentage of black to a color
+// ---------------------------------------
+
+@function shade($color, $percent){
+  @return mix(black, $color, $percent);
+}
+
+// ---------------------------------------
+// Line-height calculation function
+// ---------------------------------------
+
+@function lineheight($line-height, $font-size:16) {
+    @return decimal-round($line-height / $font-size);
+}
+
+// ---------------------------------------
+// EM calculation function
+// ---------------------------------------
+
+@function em($target, $context: 16) {
+    @return decimal-round($target / $context) * 1em;
+}
+
+// ---------------------------------------
+// REM calculation function
+// ---------------------------------------
+
+@function rem($target) {
+    @return ($target / 16) * 1rem;
+}
