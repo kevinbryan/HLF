@@ -23,21 +23,25 @@
 					<?php if ( 0 < avada_number_of_featured_images() || get_post_meta( $post->ID, 'pyre_video', true ) ) : ?>
 						<?php Avada()->images->set_grid_image_meta( array( 'layout' => strtolower( 'large' ), 'columns' => '1' ) ); ?>
 						<div class="fusion-flexslider flexslider fusion-flexslider-loading post-slideshow fusion-post-slideshow">
-						<?php if ( 'below' == Avada()->settings->get( 'blog_post_title' ) ) : ?>
-				<?php echo avada_render_post_title( $post->ID, false, '', '2' ); ?>
-			<?php endif; ?>
-				<?php if ( ( Avada()->settings->get( 'author_info' ) && 'no' != get_post_meta( $post->ID, 'pyre_author_info', true ) ) || ( ! Avada()->settings->get( 'author_info' ) && 'yes' == get_post_meta( $post->ID, 'pyre_author_info', true ) ) ) : ?>
-					<div>
-						<?php ob_start(); ?>
-						<?php the_author_posts_link(); ?>
-						<?php $title = sprintf( __( 'Posted byssssss: %s', 'Avada' ), ob_get_clean() ); ?>
-						<?php echo Avada()->template->title_template( $title, '3' ); ?>
-							<div class="avatar">
-								<?php echo get_avatar( get_the_author_meta( 'email' ), '72' ); ?>
+							<div class="blog-image-content">	
+							<!-- Main Title -->
+							<?php if ( 'below' == Avada()->settings->get( 'blog_post_title' ) ) : ?>
+									<?php echo avada_render_post_title( $post->ID, false, '', '2' ); ?>
+							<?php endif; ?>
+							<!-- Avatar -->
+							<?php if ( ( Avada()->settings->get( 'author_info' ) && 'no' != get_post_meta( $post->ID, 'pyre_author_info', true ) ) || ( ! Avada()->settings->get( 'author_info' ) && 'yes' == get_post_meta( $post->ID, 'pyre_author_info', true ) ) ) : ?>
+								<div class="blog-author">
+									<?php echo get_avatar( get_the_author_meta( 'email' ), '35' ); ?>
+									<?php ob_start(); ?>
+									<?php the_author_posts_link(); ?>
+									<?php $title = sprintf( __( 'Posted by: %s', 'Avada' ), ob_get_clean() ); ?>
+									<?php echo Avada()->template->title_template( $title, '3' ); ?>
+								</div>
+							<?php endif; ?>
 							</div>
-					</div>
-				<?php endif; ?>
-				<div class="wrap-bg"></div>
+
+							<!-- Gradient Overlay -->
+							<div class="wrap-bg"></div>
 			
 							<ul class="slides">
 								<?php if ( get_post_meta( $post->ID, 'pyre_video', true ) ) : ?>
