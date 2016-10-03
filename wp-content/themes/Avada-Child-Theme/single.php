@@ -30,7 +30,7 @@
 					<div>
 						<?php ob_start(); ?>
 						<?php the_author_posts_link(); ?>
-						<?php $title = sprintf( __( 'Posted by: %s', 'Avada' ), ob_get_clean() ); ?>
+						<?php $title = sprintf( __( 'Posted byssssss: %s', 'Avada' ), ob_get_clean() ); ?>
 						<?php echo Avada()->template->title_template( $title, '3' ); ?>
 							<div class="avatar">
 								<?php echo get_avatar( get_the_author_meta( 'email' ), '72' ); ?>
