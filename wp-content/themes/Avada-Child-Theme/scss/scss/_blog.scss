@@ -60,19 +60,6 @@
 .single-post {
     #main {
 
-        .blog-image-content {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            padding: 0 10%;
-            z-index: 4;
-            text-align: center;
-        }
-        .entry-title {            
-            color: #fff;
-            text-transform: uppercase;
-            font-size: 72px !important;
-        }
         .post {
             background-color: #fff;
         }
@@ -95,15 +82,38 @@
                 @include content-block();
                 @include sprite();
                 @include absolute(left 0 right 0 bottom -13px);
-                @include rotate(1deg);
+                @include rotate(0.9deg);
                 background-position: 0 -60px;
                 background-repeat: repeat-x;
                 height: 25px;
             }
         }
+        .blog-image-content {
+            position: absolute;
+            bottom: 55px;
+            width: 100%;
+            padding: 0 10%;
+            z-index: 4;
+            text-align: center;
+        }
+        // Blog Title
+        .entry-title {            
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 72px !important;
+            margin-bottom: 15px;
+        }
         // Blog Author
         .blog-author {
-            @include font-proxima();
+            h3{
+                @include font-proxima();
+                font-size: 16px;
+                color: #8c9495;
+                a {
+                    color: $green;
+                    text-decoration: underline;
+                }
+            }
         }
         .avatar{
             @include border-radius(50%);
@@ -116,6 +126,18 @@
         }
         .title-sep-container {
             display: none;
+        }
+
+        //  Content
+        .post-content {
+            h2,h3,h4,p {
+                padding: 0 210px
+            }
+            img {
+                margin-left:auto;
+                margin-right:auto;
+                max-width: 760px;
+            }
         }
     }
 }
