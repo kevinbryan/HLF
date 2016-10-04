@@ -29,7 +29,6 @@
 									<?php echo avada_render_post_title( $post->ID, false, '', '2' ); ?>
 							<?php endif; ?>
 							<!-- Avatar -->
-							<?php if ( ( Avada()->settings->get( 'author_info' ) && 'no' != get_post_meta( $post->ID, 'pyre_author_info', true ) ) || ( ! Avada()->settings->get( 'author_info' ) && 'yes' == get_post_meta( $post->ID, 'pyre_author_info', true ) ) ) : ?>
 								<div class="blog-author">
 									<?php echo get_avatar( get_the_author_meta( 'email' ), '35' ); ?>
 									<?php ob_start(); ?>
@@ -37,7 +36,6 @@
 									<?php $title = sprintf( __( 'Posted by: %s', 'Avada' ), ob_get_clean() ); ?>
 									<?php echo Avada()->template->title_template( $title, '3' ); ?>
 								</div>
-							<?php endif; ?>
 							</div>
 
 							<!-- Gradient Overlay -->

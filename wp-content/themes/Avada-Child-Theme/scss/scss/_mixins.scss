@@ -815,39 +815,17 @@ $path-ui-img: "../img/ui" !default;
 }
 
 
+// TYPOGRAPHY
 
-
-
-@mixin mobile-padding{
-@media screen and (max-width:$break-large) {
-        padding:30px;
-        padding:30px;
-
+@mixin font-berthold() {
+  font-family: Berthold, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
-@media screen and (max-width:$break-mobile) {
-    padding:30px 20px;
-    padding:30px 20px;
+@mixin font-proxima) {
+  font-family: Proxima, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
+@mixin font-proxima-semibold,() {
+  font-family: Proxima-semibold, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
-@mixin mobile-v-padding{
-@media screen and (max-width:$break-large) {
-        padding-top:30px;
-        padding-bottom:30px;
-
-}
-@media screen and (max-width:$break-mobile) {
-    padding-top:20px;
-    padding-bottom:20px;
-}
-}
-@mixin mobile-h-padding{
-@media screen and (max-width:$break-large) {
-        padding-left:30px;
-        padding-right:30px;
-
-}
-@media screen and (max-width:$break-mobile) {
-    padding-left:20px;
-    padding-right:20px;
-}
+@mixin font-vervieine() {
+  font-family: Vervieine, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }

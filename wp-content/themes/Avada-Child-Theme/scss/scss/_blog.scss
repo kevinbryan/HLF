@@ -101,6 +101,10 @@
                 height: 25px;
             }
         }
+        // Blog Author
+        .blog-author {
+            @include font-proxima();
+        }
         .avatar{
             @include border-radius(50%);
             margin-right:5px
