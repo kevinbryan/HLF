@@ -90,14 +90,14 @@
 				<?php endif; ?>
 			<?php endif; ?>
 
-			
+			<?php echo avada_render_post_metadata( 'single' ); ?>
 			<div class="post-content">
 				<?php the_content(); ?>
 				<?php avada_link_pages(); ?>
 			</div>
 
 			<?php if ( ! post_password_required( $post->ID ) ) : ?>
-				<?php echo avada_render_post_metadata( 'single' ); ?>
+				
 				<?php avada_render_social_sharing(); ?>
 				<?php if ( ( Avada()->settings->get( 'author_info' ) && 'no' != get_post_meta( $post->ID, 'pyre_author_info', true ) ) || ( ! Avada()->settings->get( 'author_info' ) && 'yes' == get_post_meta( $post->ID, 'pyre_author_info', true ) ) ) : ?>
 					<div class="about-author">

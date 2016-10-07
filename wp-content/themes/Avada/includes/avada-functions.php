@@ -496,9 +496,9 @@ if ( ! function_exists( 'avada_render_post_metadata' ) ) {
 			// Render comments
 			if ( $settings['post_meta_comments'] && $layout != 'grid_timeline' ) {
 				ob_start();
-				comments_popup_link( esc_html__( '0 Comments', 'Avada' ), esc_html__( '1 Comment', 'Avada' ), esc_html__( '% Comments', 'Avada' ) );
+				comments_popup_link( esc_html__( '0', 'Avada' ), esc_html__( '1', 'Avada' ), esc_html__( '%', 'Avada' ) );
 				$comments = ob_get_clean();
-				$metadata .= '<span class="fusion-comments">' . $comments . '</span>';
+				$metadata .= '<span class="fusion-comments"><span class="icon--circle-orange">' . $comments . '</span> comments</span>';
 			}
 
 			// Render the HTML wrappers for the different layouts
