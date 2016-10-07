@@ -2260,6 +2260,7 @@ function comment_form( $args = array(), $post_id = null ) {
 		do_action( 'comment_form_before' );
 		?>
 		<div id="respond" class="comment-respond">
+			<div class="wrap">
 			<?php
 			echo $args['title_reply_before'];
 
@@ -2439,6 +2440,7 @@ function comment_form( $args = array(), $post_id = null ) {
 					?>
 				</form>
 			<?php endif; ?>
+			</div>
 		</div><!-- #respond -->
 		<?php
 		/**

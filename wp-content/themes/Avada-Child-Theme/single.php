@@ -2,13 +2,6 @@
 
 <div id="content" <?php Avada()->layout->add_style( 'content_style' ); ?>>
 
-	<?php if ( ( Avada()->settings->get( 'blog_pn_nav' ) && 'no' != get_post_meta( $post->ID, 'pyre_post_pagination', true ) ) || ( ! Avada()->settings->get( 'blog_pn_nav' ) && 'yes' == get_post_meta( $post->ID, 'pyre_post_pagination', true ) ) ): ?>
-		<div class="single-navigation clearfix">
-			<?php previous_post_link( '%link', esc_attr__( 'Previous', 'Avada' ) ); ?>
-			<?php next_post_link( '%link', esc_attr__( 'Next', 'Avada' ) ); ?>
-		</div>
-	<?php endif; ?>
-
 	<?php while( have_posts() ) : the_post(); ?>
 		<div id="post-<?php the_ID(); ?>" <?php post_class( 'post' ); ?>>
 			<?php $full_image = ''; ?>
@@ -39,6 +32,7 @@
 							</div>
 
 							<!-- Gradient Overlay -->
+
 							<div class="wrap-bg"></div>
 			
 							<ul class="slides">
@@ -90,11 +84,31 @@
 				<?php endif; ?>
 			<?php endif; ?>
 
+			<!-- Post meta date and comment link -->
+
 			<?php echo avada_render_post_metadata( 'single' ); ?>
+
+			<!-- Post content here -->
+
 			<div class="post-content">
-				<?php the_content(); ?>
-				<?php avada_link_pages(); ?>
+				<div class="wrap">
+					<?php the_content(); ?>
+					<?php avada_link_pages(); ?>					
+				</div>
 			</div>
+
+			<!-- Post navigation Prev / Next-->
+
+			<?php if ( ( Avada()->settings->get( 'blog_pn_nav' ) && 'no' != get_post_meta( $post->ID, 'pyre_post_pagination', true ) ) || ( ! Avada()->settings->get( 'blog_pn_nav' ) && 'yes' == get_post_meta( $post->ID, 'pyre_post_pagination', true ) ) ): ?>
+				<div class="single-navigation clearfix">
+					<div class="wrap">
+					<?php previous_post_link( '%link', esc_attr__( 'Previous', 'Avada' ) ); ?>
+					<?php next_post_link( '%link', esc_attr__( 'Next', 'Avada' ) ); ?>					
+					</div>
+				</div>
+			<?php endif; ?>
+
+			<!-- Comment Block -->
 
 			<?php if ( ! post_password_required( $post->ID ) ) : ?>
 				

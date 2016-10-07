@@ -15,6 +15,7 @@ do_action( 'avada_before_comments' );
 <?php if ( have_comments() ) : ?>
 
 	<div id="comments" class="comments-container">
+		<div class="wrap">
 		<?php ob_start(); ?>
 		<?php comments_number( esc_html__( 'No Comments', 'Avada' ), esc_html__( 'One Comment', 'Avada' ), '% ' . esc_html__( 'Comments', 'Avada' ) ); ?>
 		<?php echo Avada()->template->title_template( ob_get_clean(), '3' ); ?>
@@ -30,6 +31,7 @@ do_action( 'avada_before_comments' );
 		<?php if ( function_exists( 'the_comments_navigation' ) ) : ?>
 			<?php the_comments_navigation(); ?>
 		<?php endif; ?>
+		</div>
 	</div>
 
 <?php endif; ?>

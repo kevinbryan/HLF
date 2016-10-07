@@ -1,3 +1,10 @@
 // ---------------------------------------
 // FORMS
 // ---------------------------------------
+
+input,
+textarea {
+	@include proxima();
+	font-size:16px !important;
+	line-height: 25px;
+}

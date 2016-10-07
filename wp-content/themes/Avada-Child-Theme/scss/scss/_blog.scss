@@ -49,15 +49,16 @@
 
 .single-post {
     #main {
+        p {
+            font-size: 18px;
+            line-height: 30px;
+        }
 
         .post {
             background-color: #fff;
             position: relative;
         }
-        .single-navigation {
-            border: none;
-            margin-bottom: 20px;
-        }
+        
         .wrap-bg {
             @include absolute(top 0 left 0 bottom 0 right 0);
             display: block;
@@ -94,6 +95,18 @@
             font-size: 72px !important;
             margin-bottom: 15px;
         }
+        // Navigation
+        .single-navigation {
+            border: none;
+            margin-bottom: 20px;
+            a[rel~="prev"]{
+                float:left;
+            }
+            a[rel~="next"]{
+                float: right;
+            }
+
+        }
         // Blog Author
         .blog-author {
             h3{
@@ -118,13 +131,11 @@
         .title-sep-container {
             display: none;
         }
-         .comment-respond {padding: 0 210px 60px;}
         //  Content
         .post-content {
             padding: 10px 30px;
             h2,h3,h4,p{
-                max-width: 600px;
-                margin: 30px auto;
+                margin: 30px 0;
             }
             img {
                 margin-left: -80px;
@@ -133,6 +144,8 @@
                 max-width: 760px;
             }
         }
+
+        // Meta Info
 
         .fusion-meta-info {
             border: none;
@@ -154,10 +167,13 @@
             }
         }
 
+        // Comments
+
         .comment-respond {
             background-color: $v-light-grey;
             position: relative;
-            padding-top:40px;
+            padding-top:60px;
+            padding-bottom:60px;
             &:after {
                 @include content-block();
                 @include sprite();
@@ -167,6 +183,21 @@
                 background-repeat: repeat-x;
                 height: 25px;
             }
+            .fusion-title {
+                float:left;
+                margin-bottom:20px !important;
+            }
+            .logged-in-as {
+                font-size: 16px;
+                line-height: 25px;
+                float: right;
+                padding-top: 14px;
+                margin-top: 0;
+                a:last-child {
+                    display: none;
+                }
+            }
+
 
         }
 
@@ -189,5 +220,13 @@
     padding: 2px 20px 4px 15px;
     text-transform: uppercase;
     z-index: 2;
+}
+
+// WRAP
+
+.wrap {
+    max-width: 600px;
+    margin-left:auto;
+    margin-right:auto;
 }
 
