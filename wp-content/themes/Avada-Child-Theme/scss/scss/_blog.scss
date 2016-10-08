@@ -4,7 +4,7 @@
 .fusion-blog-layout-grid {
     // Reset wrapper bg and border
     .fusion-post-grid {
-    &:before {
+        &:before {
             @include content-block();
             @include absolute(left 13px right 7px bottom 8px);
             @include rotate(-1.3deg);
@@ -14,7 +14,7 @@
     }
     .fusion-post-wrapper {
         border: none;
-        position: relative;        
+        position: relative;
     }
     .fusion-post-slideshow {
         border: none;
@@ -30,17 +30,16 @@
             height: 6px;
             z-index: 2;
         }
-
         img {
             @include transition(all 0.3s ease);
         }
-        &:hover{img {
-             @include scale(1.05);
-        @include filter(brightness, 80%);
-        }}
-        
+        &:hover {
+            img {
+                @include scale(1.05);
+                @include filter(brightness, 80%);
+            }
+        }
     }
-
     // Content
     .fusion-post-content-wrapper {
         background-color: $white;
@@ -50,7 +49,6 @@
         .fusion-inline-sep {
             display: none;
         }
-
     }
     .blog-comment {
         color: $orange;
@@ -66,19 +64,16 @@
 // ---------------------------------------
 // Blog Article
 // ---------------------------------------
-
 .single-post {
     #main {
         p {
             font-size: 18px;
             line-height: 30px;
         }
-
         .post {
             background-color: #fff;
             position: relative;
         }
-        
         .wrap-bg {
             @include absolute(top 0 left 0 bottom 0 right 0);
             display: block;
@@ -89,7 +84,6 @@
             background: -o-linear-gradient(top, transparent 30%, rgba(0, 0, 0, 0.75) 99%, rgba(0, 0, 0, 0.75) 100%);
             background: -ms-linear-gradient(top, transparent 30%, rgba(0, 0, 0, 0.75) 99%, rgba(0, 0, 0, 0.75) 100%);
             background: linear-gradient(to bottom, transparent 30%, rgba(0, 0, 0, 0.75) 99%, rgba(0, 0, 0, 0.75) 100%);
-            
             &:after {
                 @include content-block();
                 @include sprite();
@@ -109,7 +103,7 @@
             text-align: center;
         }
         // Blog Title
-        .entry-title {            
+        .entry-title {
             color: #fff;
             text-transform: uppercase;
             font-size: 72px !important;
@@ -117,19 +111,59 @@
         }
         // Navigation
         .single-navigation {
+            
             border: none;
-            margin-bottom: 20px;
-            a[rel~="prev"]{
-                float:left;
+            
+            a{
+                color: $text-color;
+                @include verveine();
+                font-size:22px;
+                margin:0;
+                &:after,
+                &:before {
+                    content:'';
+                    @include sprite();
+                    width:30px;
+                    height:30px;                    
+                    margin:0;
+                    padding:0;
+                }
+                &:hover {
+                    color: $blue;
+                }
             }
-            a[rel~="next"]{
-                float: right;
+            a[rel~="prev"] {
+                float: left;
+                padding-left:42px;
+                &:before {
+                    left:0;
+                    background-position: -35px -150px;
+                }
+                &:hover {
+                    &:before {
+                        background-position: -105px -150px;
+                    }
+                }
+
             }
 
+            a[rel~="next"] {
+                float: right;
+                padding-right:42px;
+                &:after {
+                    right:0;
+                    background-position: 0 -150px;
+                }
+                &:hover {
+                    &:after {
+                        background-position: -70px -150px;
+                    }
+                }
+            }
         }
         // Blog Author
         .blog-author {
-            h3{
+            h3 {
                 @include font-proxima();
                 font-size: 16px;
                 color: #8c9495;
@@ -139,9 +173,9 @@
                 }
             }
         }
-        .avatar{
+        .avatar {
             @include border-radius(50%);
-            margin-right:5px
+            margin-right: 5px
         }
         .fusion-title,
         .avatar {
@@ -153,26 +187,28 @@
         }
         //  Content
         .post-content {
-            padding: 10px 30px;
-            h2,h3,h4,p{
+            padding: 10px 0;
+            h2,
+            h3,
+            h4,
+            p {
                 margin: 30px 0;
             }
             img {
-                margin-left: -80px;
-                margin-top:10px;
-                margin-bottom:10px;
-                max-width: 760px;
+                margin-top: 10px;
+                margin-bottom: 10px;                
+                @media screen and (min-width: 860px) {
+                    margin-left: -80px;
+                    max-width: 760px;
+                }
             }
         }
-
         // Meta Info
-
         .fusion-meta-info {
             border: none;
         }
-
         .fusion-meta-info {
-            float:left;
+            float: left;
         }
         .fusion-comments {
             color: $orange;
@@ -180,20 +216,18 @@
             font-size: 16px;
             line-height: 20px;
             margin-left: 40px;
-            margin-top:20px;
+            margin-top: 20px;
             a,
             a:hover {
                 color: $white;
             }
         }
-
         // Comments
-
         .comment-respond {
             background-color: $v-light-grey;
             position: relative;
-            padding-top:60px;
-            padding-bottom:60px;
+            padding-top: 60px;
+            padding-bottom: 60px;
             &:after {
                 @include content-block();
                 @include sprite();
@@ -204,8 +238,8 @@
                 height: 25px;
             }
             .fusion-title {
-                float:left;
-                margin-bottom:20px !important;
+                float: left;
+                margin-bottom: 20px !important;
             }
             .logged-in-as {
                 font-size: 16px;
@@ -217,19 +251,15 @@
                     display: none;
                 }
             }
-
-
         }
-
         .fusion-inline-sep {
-            display:none;
+            display: none;
         }
     }
 }
 
 // BLOG DATE
-
-.fusion-post-content-wrapper .fusion-single-line-meta, 
+.fusion-post-content-wrapper .fusion-single-line-meta,
 .fusion-meta-info span:nth-child(3) {
     @include absolute(top 0 left 0);
     @include sprite;
@@ -242,11 +272,4 @@
     z-index: 2;
 }
 
-// WRAP
-
-.wrap {
-    max-width: 600px;
-    margin-left:auto;
-    margin-right:auto;
-}
 

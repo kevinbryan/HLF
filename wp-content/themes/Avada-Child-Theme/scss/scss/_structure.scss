@@ -6,3 +6,13 @@ body {
   background-size: cover;
 }
 
+// WRAP
+.wrap {
+	@include clearfix();
+    max-width: rem(660);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: rem(30);
+    padding-right: rem(30);
+}
+
