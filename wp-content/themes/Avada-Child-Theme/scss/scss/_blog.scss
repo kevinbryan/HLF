@@ -3,10 +3,18 @@
 // ---------------------------------------
 .fusion-blog-layout-grid {
     // Reset wrapper bg and border
+    .fusion-post-grid {
+    &:before {
+            @include content-block();
+            @include absolute(left 13px right 7px bottom 8px);
+            @include rotate(-1.3deg);
+            background-color: #b4bfc3;
+            height: 180px;
+        }
+    }
     .fusion-post-wrapper {
         border: none;
-        position: relative;
-        background-color: red !important;
+        position: relative;        
     }
     .fusion-post-slideshow {
         border: none;
@@ -22,15 +30,27 @@
             height: 6px;
             z-index: 2;
         }
+
+        img {
+            @include transition(all 0.3s ease);
+        }
+        &:hover{img {
+             @include scale(1.05);
+        @include filter(brightness, 80%);
+        }}
+        
     }
+
     // Content
     .fusion-post-content-wrapper {
         background-color: $white;
         text-align: center;
         padding-bottom: 10px;
+        z-index: 2;
         .fusion-inline-sep {
             display: none;
         }
+
     }
     .blog-comment {
         color: $orange;
