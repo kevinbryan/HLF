@@ -83,6 +83,7 @@ h4 {
         }
         @media only screen and (max-width: 800px) {
             padding-top: 0 !important;
+            height: 40px;
             .fusion-logo {
                 margin-left: -150px !important;
                 width: 300px;
@@ -98,6 +99,49 @@ h4 {
             h3 {
                 font-size: 14px;
                 line-height: 25px;
+            }
+            .fusion-mobile-menu-icons {
+                @include absolute(top 10px right -20px);
+                z-index: 2;
+            }
+            .fusion-mobile-nav-holder {
+                @include absolute(top 0 left 0 right 0);
+                padding-top: 40px;
+                padding-bottom: 30px;
+                background-color: $blue;
+                z-index: 1;
+                &:before {
+                    @include content-block();
+                    @include absolute(left 0 right 0 bottom -1024px);
+                    height: 1024px;
+                    background-color:  rgba(0, 12, 12, .7);
+                }
+                &:after{
+                    @include content-block();
+                    @include absolute(left 0 right 0 bottom -6px);
+                    @include sprite();
+                    @include rotate(180deg);
+                    height: 6px;
+                    background-repeat: repeat-x;
+                    background-position: 0 -40px;
+                }
+                .fusion-menu {
+                    border: none;
+                    a {
+                        @include berthold();                        
+                        color: #fff;
+                        font-size: 16px;
+                        background-color: transparent;
+                        border: none;
+                        height: 50px;
+                        line-height: 50px;
+                        text-transform: uppercase;
+                        span {
+                            display: block;
+                            text-align: center;
+                        }
+                    }
+                }
             }
         }
         @media only screen and (max-width: 568px) {
