@@ -1,14 +1,14 @@
-body { 
-  background: url(../../uploads/2016/10/main_bg.jpg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+body {
+    background: url(../../uploads/2016/10/main_bg.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 // WRAP
 .wrap {
-	@include clearfix();
+    @include clearfix();
     max-width: rem(660);
     margin-left: auto;
     margin-right: auto;
@@ -16,3 +16,20 @@ body {
     padding-right: rem(30);
 }
 
+@media only screen and (max-width: 800px) {
+    #main {
+        padding-top: 120px !important;
+    }
+}
+
+@media only screen and (max-width: 568px) {
+    #main {
+    	padding-top: 110px !important;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+    .wrap {
+        padding-left: rem(20);
+        padding-right: rem(20);
+    }
+}

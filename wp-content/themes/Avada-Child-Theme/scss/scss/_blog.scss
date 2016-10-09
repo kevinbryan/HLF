@@ -116,6 +116,12 @@
             text-transform: uppercase;
             font-size: 72px !important;
             margin-bottom: 15px;
+            @media only screen and (max-width: 800px) {
+                font-size: 42px !important;
+            }
+            @media only screen and (max-width: 568px) {
+                font-size: 36px !important;
+            }
         }
         // Navigation
         .single-navigation {
