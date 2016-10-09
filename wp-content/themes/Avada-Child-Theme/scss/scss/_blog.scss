@@ -1,6 +1,7 @@
 // ---------------------------------------
 // Blog Lister
 // ---------------------------------------
+
 .fusion-blog-layout-grid {
     // Reset wrapper bg and border
     .fusion-post-grid {
@@ -65,6 +66,13 @@
 // Blog Article
 // ---------------------------------------
 .single-post {
+    .post{position:relative;&:before {
+            @include content-block();
+            @include absolute(left 10px right -3px bottom 0px);
+            @include rotate(-1deg);
+            background-color: #b4bfc3;
+            height: 300px;
+        }}
     #main {
         p {
             font-size: 18px;
