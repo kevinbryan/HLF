@@ -111,22 +111,20 @@
         }
         // Navigation
         .single-navigation {
-            
             border: none;
-            
-            a{
+            a {
                 color: $text-color;
                 @include verveine();
-                font-size:22px;
-                margin:0;
+                font-size: 22px;
+                margin: 0;
                 &:after,
                 &:before {
-                    content:'';
+                    content: '';
                     @include sprite();
-                    width:30px;
-                    height:30px;                    
-                    margin:0;
-                    padding:0;
+                    width: 30px;
+                    height: 30px;
+                    margin: 0;
+                    padding: 0;
                 }
                 &:hover {
                     color: $blue;
@@ -134,9 +132,9 @@
             }
             a[rel~="prev"] {
                 float: left;
-                padding-left:42px;
+                padding-left: 42px;
                 &:before {
-                    left:0;
+                    left: 0;
                     background-position: -35px -150px;
                 }
                 &:hover {
@@ -144,14 +142,12 @@
                         background-position: -105px -150px;
                     }
                 }
-
             }
-
             a[rel~="next"] {
                 float: right;
-                padding-right:42px;
+                padding-right: 42px;
                 &:after {
-                    right:0;
+                    right: 0;
                     background-position: 0 -150px;
                 }
                 &:hover {
@@ -177,7 +173,7 @@
             @include border-radius(50%);
             margin-right: 5px
         }
-        .fusion-title,
+        .blog-image-content .fusion-title,
         .avatar {
             @include inline-block-middle();
             margin-bottom: 0 !important;
@@ -196,7 +192,7 @@
             }
             img {
                 margin-top: 10px;
-                margin-bottom: 10px;                
+                margin-bottom: 10px;
                 @media screen and (min-width: 860px) {
                     margin-left: -80px;
                     max-width: 760px;
@@ -223,11 +219,11 @@
             }
         }
         // Comments
+        .comments-container,
         .comment-respond {
             background-color: $v-light-grey;
             position: relative;
-            padding-top: 60px;
-            padding-bottom: 60px;
+            padding-top: 70px;
             &:after {
                 @include content-block();
                 @include sprite();
@@ -237,6 +233,51 @@
                 background-repeat: repeat-x;
                 height: 25px;
             }
+        }
+        // Main Comments 
+        .comments-container {
+            .comment-list {
+                margin-bottom: 40px;
+            }
+            .the-comment, 
+            .fusion-title {
+                    position: relative;
+                    border-bottom: none;
+                    margin-bottom:25px !important;
+                    &:after {
+                        @include content-block();
+                        @include sprite();
+                        @include absolute(left 0 right 0 bottom 0);
+                        background-position: 0 -50px;
+                        background-repeat: repeat-x;
+                        height: 2px;
+                    }
+
+                }
+             .fusion-title  {
+                padding-bottom:25px;
+             }
+            .comment-author,
+            .comment-text {
+                margin-left: 70px;
+            }
+            .comment-text {
+                p {
+                    font-size: 16px;
+                    line-height: 1.5625;
+                }
+            }
+        }
+        // Comments Form
+        .comments-container + .comment-respond {
+            margin-top: 0;
+            padding-top: 0;
+            &:after {
+                display: none;
+            }
+        }
+        .comment-respond {
+            padding-bottom: 70px;
             .fusion-title {
                 float: left;
                 margin-bottom: 20px !important;
@@ -271,5 +312,3 @@
     text-transform: uppercase;
     z-index: 2;
 }
-
-
