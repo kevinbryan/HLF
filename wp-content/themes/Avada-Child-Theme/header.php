@@ -125,6 +125,11 @@ if ( 'modern' == Avada()->settings->get( 'mobile_menu_design' ) ) {
 	<?php endif; ?>
 	<div id="wrapper" class="<?php echo $wrapper_class; ?>">
 		<div id="home" style="position:relative;top:1px;"></div>
+		<!-- Start Opening Banner -->
+		<div class="opening-banner">
+			<h2>OPENING <span>SPRING 2020</span></h2>
+		</div>
+		<!-- End Opening Banner -->
 		<?php if ( Avada()->settings->get( 'slidingbar_widgets' ) && ! is_page_template( 'blank.php' ) && ! $boxed_side_header_right ) : ?>
 			<?php get_template_part( 'slidingbar' ); ?>
 		<?php endif; ?>

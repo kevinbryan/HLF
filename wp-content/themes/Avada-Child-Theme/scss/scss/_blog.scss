@@ -1,7 +1,6 @@
 // ---------------------------------------
 // Blog Lister
 // ---------------------------------------
-
 .fusion-blog-layout-grid {
     // Reset wrapper bg and border
     .fusion-post-grid {
@@ -66,17 +65,27 @@
 // Blog Article
 // ---------------------------------------
 .single-post {
-    .post{position:relative;&:before {
+    .post {
+        position: relative;
+        &:before {
             @include content-block();
             @include absolute(left 10px right -3px bottom 0px);
             @include rotate(-1deg);
             background-color: #b4bfc3;
             height: 300px;
-        }}
+        }
+    }
     #main {
-        p {
+        p,
+        li,
+        dd,
+        table {
             font-size: 18px;
             line-height: 30px;
+            @media screen and (max-width: 800px) {
+                font-size: 16px;
+                line-height: 25px;
+            }
         }
         .post {
             background-color: #fff;
@@ -113,7 +122,6 @@
                 padding: 0 20px;
                 bottom: -45px;
             }
-
         }
         // Blog Title
         .entry-title {
@@ -124,7 +132,9 @@
             @media only screen and (max-width: 800px) {
                 font-size: 42px !important;
                 line-height: 45px;
-                margin-bottom: 45px;
+                margin-bottom: 50px;
+                padding-left:10px;
+                padding-right:10px;
             }
             @media only screen and (max-width: 568px) {
                 font-size: 36px !important;
@@ -211,6 +221,9 @@
             h4,
             p {
                 margin: 30px 0;
+                @media screen and (max-width: 800px) {
+                    margin: 25px 0;
+                }
             }
             img {
                 margin-top: 10px;
@@ -230,7 +243,10 @@
         }
         .fusion-comments {
             color: $orange;
-            display: block;
+            display: none;
+            @media screen and (min-width: 1025px) {
+                display: block;
+            }
             font-size: 16px;
             line-height: 20px;
             margin-left: 40px;
@@ -261,24 +277,23 @@
             .comment-list {
                 margin-bottom: 40px;
             }
-            .the-comment, 
+            .the-comment,
             .fusion-title {
-                    position: relative;
-                    border-bottom: none;
-                    margin-bottom:25px !important;
-                    &:after {
-                        @include content-block();
-                        @include sprite();
-                        @include absolute(left 0 right 0 bottom 0);
-                        background-position: 0 -50px;
-                        background-repeat: repeat-x;
-                        height: 2px;
-                    }
-
+                position: relative;
+                border-bottom: none;
+                margin-bottom: 25px !important;
+                &:after {
+                    @include content-block();
+                    @include sprite();
+                    @include absolute(left 0 right 0 bottom 0);
+                    background-position: 0 -50px;
+                    background-repeat: repeat-x;
+                    height: 2px;
                 }
-             .fusion-title  {
-                padding-bottom:25px;
-             }
+            }
+            .fusion-title {
+                padding-bottom: 25px;
+            }
             .comment-author,
             .comment-text {
                 margin-left: 70px;
