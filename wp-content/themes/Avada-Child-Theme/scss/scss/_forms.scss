@@ -12,9 +12,10 @@
     font-size: rem(16);
     -webkit-appearance: none;
     height: rem(50);
-    width:100%;
+    margin-bottom: rem(10);
+    width: 100%;
     color: $light-text-color;
-    padding:rem(15);
+    padding: rem(15);
     outline: none;
     &:focus,
     &:hover {
@@ -38,6 +39,7 @@ textarea {
     input[type=password],
     input[type=email],
     input[type=url],
+    input[type=date],
     textarea,
     #comment-textarea textarea,
     select,
@@ -48,5 +50,22 @@ textarea {
     textarea,
     #comment-textarea textarea {
         height: 150px;
+    }
+}
+
+// ---------------------------------------
+// Contact Form
+// ---------------------------------------
+div.wpcf7 {
+    @include proxima-semibold();
+    margin: 0 auto;
+    max-width: 640px;
+    padding:0 20px;
+    color: $white;
+
+    .wpcf7-form-control-wrap {
+        padding-top: 10px;
+        display: block;
+        @include proxima();
     }
 }

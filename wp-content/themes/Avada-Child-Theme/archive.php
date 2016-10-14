@@ -1,5 +1,6 @@
-<?php get_header(); ?>
-<div id="content" <?php Avada()->layout->add_class( 'content_class' ); ?> <?php Avada()->layout->add_style( 'content_style' ); ?>>
+<?php get_header(); ?><?php echo do_shortcode('[searchandfilter fields="category,post_date"]'); ?>
+<div id="content" <?php Avada()->layout->add_class( 'content_class' ); ?> 
+<?php Avada()->layout->add_style( 'content_style' ); ?>>
 	<?php if ( category_description() ) : ?>
 		<div id="post-<?php the_ID(); ?>" <?php post_class( 'fusion-archive-description' ); ?>>
 			<div class="post-content">
