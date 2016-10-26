@@ -1,18 +1,63 @@
 // ---------------------------------------
 // Main Footer
 // ---------------------------------------
-
 .fusion-footer {
-	position:relative;
-    &:after{
+    position: relative;
+    padding: 25px 0;
+    background-color: $blue;
+    &:after {
         @include content-block();
         @include sprite();
         @include absolute(left 0 right 0 top -6px);
         background-position: 0 -40px;
         background-repeat: repeat-x;
-        height:6px;
+        height: 6px;
     }
     li {
-    	margin-left:10px;
+        @include proxima-semibold();
+        font-size: 16px;
+        line-height: 20px;
+        display: inline-block;
+        margin-left: 15px;
+    }
+    a{
+        &:hover,
+        &:focus {
+            color: $white !important;
+            opacity: .6;
+        }
+    }
+    .footer-links {
+        margin-bottom: 10px;
+    }
+    .footer-logos {
+        margin-top: 10px;
+    }
+
+    .footer-social {
+        li {
+            margin-left: 10px;
+        }
+    }
+
+    @media only screen and (min-width: 801px) {
+
+        li:first-child {
+            margin-left:0;
+        }
+
+    }
+
+    @media only screen and (max-width: 800px) {
+        .pull-right,
+        .pull-left {
+            float:none;
+            text-align: center;
+        }
+        .footer-logos {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
     }
 }

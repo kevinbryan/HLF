@@ -1,4 +1,5 @@
-<?php get_header(); ?><?php echo do_shortcode('[searchandfilter fields="category,post_date"]'); ?>
+<?php get_header(); ?>
+<?php echo do_shortcode('[searchandfilter fields="category,post_date"]'); ?>
 <div id="content" <?php Avada()->layout->add_class( 'content_class' ); ?> 
 <?php Avada()->layout->add_style( 'content_style' ); ?>>
 	<?php if ( category_description() ) : ?>

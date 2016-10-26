@@ -2,16 +2,13 @@
 	@include sprite;
 	@include hide-text;
 	display:inline-block;
+	vertical-align: top;
 	width: 30px;
 	height: 30px;
 }
 
 .icon-social {
-	@extend %icon;
-	&:hover,
-	&:focus {
-		opacity: .6;
-	}
+	@extend %icon;	
 }
 
 .icon-social--youtube {
@@ -24,6 +21,21 @@
 
 .icon-social--twitter {
 	background-position: -70px -110px;
+}
+
+.icon-wwt,
+.icon-hlf {
+	@extend %icon;
+	height: 55px;
+}
+
+.icon-wwt {
+	width:45px;
+	background-position: -110px -190px;
+}
+.icon-hlf {
+	width:100px;
+	background-position: 0 -190px;
 }
 
 .icon--circle-orange {
