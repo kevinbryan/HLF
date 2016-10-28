@@ -1,19 +1,18 @@
 html body {
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-
+    
+    background: url(img/map.png) repeat top left;
     &.home,
     &.single,
     &.archive,
     &.search {
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
         background-attachment: fixed !important;
         background: url(../../uploads/2016/10/main_bg.jpg) no-repeat center center fixed;
     }
 }
-
-
 
 // WRAP
 .wrap {
@@ -43,7 +42,79 @@ html body {
             padding-right: 10px;
         }
         .page-template-100-width & {
-            padding-top:0;
+            padding-top: 0 !important;
+        }
+    }
+}
+
+// Hero Image
+.page {
+    .fusion-page-title-bar {
+        background-position: center top !important;
+        position: relative;
+
+        .fusion-page-title-row {
+            max-width: 760px;
+            padding-top: 60px;
+        }
+        &:after {
+            @include content-block();
+            @include sprite();
+            @include absolute(left 0 right 0 bottom -1px);
+            background-position: 0 0;
+            background-repeat: repeat-x;
+            height: 6px;
+            z-index: 2;
+        }
+        h1,
+        h3 {
+            color: #fff;
+        }
+        h1 {
+            font-size: 80px;
+        }
+        h3 {
+            font-size: 20px;
+            line-height: 30px;
+        }
+        h1 {
+            position: relative;
+            margin-bottom: 45px;
+            &:after {
+                @include content-block();
+                @include sprite();
+                @include absolute(left 50% bottom -16px);
+                background-position: -200px -90px;
+                background-repeat: no-repeat;
+                margin-left: -45px;
+                height: 16px;
+                width: 90px;
+            }
+        }
+        @media only screen and (max-width: 800px) {
+            h1 {
+                font-size: 50px;
+                margin-bottom: 5px !important;
+                
+            }
+            h3 {
+                display:none;
+            }
+        }
+    }
+}
+
+// Main Content
+#main {
+    .main-content {
+        @media only screen and (max-width: 800px) {
+            padding-top:30px !important;
+        }
+        .fusion-row {
+            max-width: 760px;
+        }
+        .imageframe-align-center {
+            margin: 50px -130px;
         }
     }
 }

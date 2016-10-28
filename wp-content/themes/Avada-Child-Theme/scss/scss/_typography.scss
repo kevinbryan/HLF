@@ -1,0 +1,44 @@
+ h1,
+h2,
+h3,
+h4 {
+    font-style: normal;
+    font-weight: normal;
+}
+
+ #main {
+     p,
+     li,
+     dd,
+     table {
+         font-size: 18px;
+         line-height: 30px;
+         @media screen and (max-width: 800px) {
+             font-size: 16px;
+             line-height: 25px;
+         }
+     }
+
+     
+ }
+ 
+ .single-post .post-content,
+ .page-template-100-width .post-content {
+     h2,
+     h3,
+     h4,
+     p {
+         margin: 30px 0;
+         @media screen and (max-width: 800px) {
+             margin: 25px 0;
+         }
+     }
+     .fullwidth-box:first-child .fusion-row{
+     	p:first-child{
+     		
+     	@include proxima-semibold();
+     	color: #1f2122;
+     
+     	}
+     }
+ }

@@ -1,14 +1,6 @@
 // ---------------------------------------
 // Header
 // ---------------------------------------
-h1,
-h2,
-h3,
-h4 {
-    font-style: normal;
-    font-weight: normal;
-}
-
 .fusion-header {
     position: relative;
     background-color: rgba(0, 12, 12, 0.54) !important;
@@ -26,16 +18,18 @@ h4 {
     }
     h2 {
         font-family: Berthold, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        font-size: 40px;
+        font-size: 25px;
         line-height: 1;
-        margin-top: 22px;
-        margin-bottom: 10px;
+        margin-top: 17px;
+        margin-bottom: 6px;
+        letter-spacing: .02em;
     }
     h3 {
-        font-size: 16px;
-        line-height: 1.5625;
+        font-size: 14px;
+        line-height: 1.429;
         margin-bottom: 0;
         opacity: .8;
+        letter-spacing: .06em;
         text-transform: uppercase;
     }
     .fusion-main-menu > ul > li > a,
@@ -69,42 +63,43 @@ h4 {
 }
 
 #wrapper {
-
+    .fusion-header-wrapper {
+        position: absolute;
+        width: 100%;
+    }
     .fusion-header {
         .fusion-logo {
             float: none;
             @include absolute(left 50%);
-            margin-left: -200px !important;
-            width: 400px;
+            margin-left: -150px !important;
+            width: 300px;
             text-align: center;
             z-index: 1;
         }
         .fusion-main-menu {
             width: 100%;
             @media only screen and (max-width: 1024px) {
-                padding-left:20px;
-                padding-right:20px;
+                padding-left: 20px;
+                padding-right: 20px;
             }
-
         }
         @media only screen and (max-width: 800px) {
             padding-top: 0 !important;
             height: 40px;
             .fusion-logo {
-                margin-left: -150px !important;
-                width: 300px;
+                margin-left: -125px !important;
+                width: 250px;
             }
             img {
-                width: 60px;
+                width: 55px;
             }
             h2 {
-                font-size: 26px;
-                margin-top: 15px;
-                margin-bottom: 0px;
+                margin-top: 12px;
+                font-size: 20px;
             }
             h3 {
-                font-size: 14px;
-                line-height: 25px;
+                font-size: 12px;
+                letter-spacing: 0;
             }
             .fusion-mobile-menu-icons {
                 @include absolute(top 10px right -20px);
@@ -154,27 +149,12 @@ h4 {
                 }
             }
         }
-        @media only screen and (max-width: 568px) {
-            .fusion-logo {
-                margin-left: -125px !important;
-                width: 250px;
-            }
-            img {
-                width: 55px;
-            }
-            h2 {
-                font-size: 22px;
-            }
-            h3 {
-                font-size: 12px;
-            }
-        }
     }
 }
 
 // Opening Banner
 .opening-banner {
-    @include absolute(top 42px left -110px);
+    @include absolute(top 12px left -108px);
     @include transform(rotate(-37.5deg));
     width: 300px;
     padding: 5px;
@@ -197,8 +177,8 @@ h4 {
     }
     @media only screen and (max-width: 1200px) {
         @include transform(scale(.79) rotate(-40deg));
-        left:-118px;
-        top:34px;
+        left: -118px;
+        top: 3px;
         &:after {
             bottom: -5px;
         }
@@ -206,10 +186,6 @@ h4 {
             top: -5px;
         }
     }
-    @media only screen and (max-width: 800px) {
-        top:49px;
-    }
-
     h2 {
         @include berthold();
         color: $white;
