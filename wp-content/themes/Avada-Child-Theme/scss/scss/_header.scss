@@ -32,6 +32,10 @@
         letter-spacing: .06em;
         text-transform: uppercase;
     }
+    .fusion-main-menu a {
+        @include opacity(50);
+        color: #fff;
+    }
     .fusion-main-menu > ul > li > a,
     .fusion-main-menu > ul > li > a:hover {
         text-transform: uppercase;
@@ -51,8 +55,8 @@
 .fusion-main-menu .current_page_item > a,
 .fusion-main-menu > ul > li > a:hover,
 .single-post .menu-item-home a {
-    position: relative;
-    color: #fff;
+    position: relative;    
+    @include opacity(100);
     &:after {
         @include content-block();
         @include sprite();

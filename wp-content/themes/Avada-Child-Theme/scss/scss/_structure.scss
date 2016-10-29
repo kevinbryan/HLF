@@ -1,5 +1,10 @@
-html body {
-    
+// Turn off search
+
+.searchandfilter {
+    display: none;
+}
+
+html body {  
     background: url(img/map.png) repeat top left;
     &.home,
     &.single,
@@ -115,6 +120,10 @@ html body {
         }
         .imageframe-align-center {
             margin: 50px -130px;
+            @media only screen and (max-width: 800px) {
+                margin-left:-30px;
+                margin-right:-30px;
+            }
         }
     }
 }
