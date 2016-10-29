@@ -13,7 +13,6 @@ h4 {
     dt,
     th,
     td {
-    	@include proxima();
         font-size: 18px;
         line-height: 30px;
         @media screen and (max-width: 800px) {
