@@ -133,3 +133,22 @@ html body {
         }
     }
 }
+@include keyframes(showAnimation) {
+    0% {
+        opacity:0;
+        @include translateY(30px);
+    }
+    100% {
+        opacity:1;
+        @include translateY(0);
+    }
+}
+
+.fusion-page-title-captions{
+    opacity:0;
+    .wf-active &{
+    @include animation(showAnimation, .5s);
+}
+}
+
+
