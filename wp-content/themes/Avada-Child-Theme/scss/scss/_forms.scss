@@ -68,4 +68,27 @@ div.wpcf7 {
         display: block;
         @include proxima();
     }
+    // Errors
+    span.wpcf7-not-valid-tip {
+        color: $white;
+        font-size: 1em;
+        background: $red;
+        display: block;
+        font-size: 16px;
+        padding: 5px 10px;
+        border-radius: 4px;
+        margin-top:5px;
+        position: relative;
+        &:after {
+            @include absolute(top -10px left 10px);
+            @include triangle(10px, #ce2d26);
+
+        }
+    }
+    .wpcf7-validation-errors {
+    display:none !important;
+    }
 }
+
+
+

@@ -67,6 +67,7 @@
 .single-post {
     .post {
         position: relative;
+        margin-bottom: 10px;
         &:before {
             @include content-block();
             @include absolute(left 10px right -3px bottom 0px);

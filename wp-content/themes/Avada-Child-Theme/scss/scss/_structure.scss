@@ -16,7 +16,7 @@ html body {
         -o-background-size: cover;
         background-size: cover;
         background-attachment: fixed !important;
-        background: url(../../uploads/2016/10/main_bg.jpg) no-repeat center center fixed;
+        background: url(../../uploads/2016/10/main_bg_4.jpg) no-repeat center center fixed;
     }
 }
 
@@ -37,16 +37,21 @@ html body {
 // MAIN
 #wrapper {
     #main {
-        padding-top: 200px;
-        padding-bottom: 50px;
+        padding-top: 210px;
+        padding-bottom: 80px;
         @media only screen and (max-width: 800px) {
-            padding-top: 120px;
+            padding-top: 160px;
+            padding-bottom: 50px;
         }
         @media only screen and (max-width: 568px) {
-            padding-top: 110px;
             padding-left: 10px;
             padding-right: 10px;
         }
+        @media only screen and (min-height: 800px) {
+        .page-id-22 &{
+            padding-bottom: 12.5%;
+        }
+    }
         .page-template-100-width & {
             padding-top: 0 !important;
         }
