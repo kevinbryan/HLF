@@ -54,6 +54,23 @@ h4 {
         @media screen and (max-width: 800px) {
             margin: 25px 0;
         }
+      &.intro {
+            @include proxima-semibold();
+            font-size: 20px;
+            line-height: 30px;
+            color: #1f2122;
+            @media screen and (max-width: 800px) {
+                font-size: 18px;
+            }
+        }
+    }
+    h2,
+    h3,
+    h4 {
+      margin-top: 50px;
+        @media screen and (max-width: 800px) {
+            margin-top: 40px;
+        }  
     }
     li, ul {
     	margin:0;
@@ -67,24 +84,15 @@ h4 {
 		padding-left: 20px;
 		position: relative;
 		&:after {
-        @include content-block();
-        @include sprite();
-        @include absolute(left 0 top 11px);
-        background-position: -140px -150px;
-        height: 7px;
-        width: 7px;
-    }
+            @include content-block();
+            @include sprite();
+            @include absolute(left 0 top 11px);
+            background-position: -140px -150px;
+            height: 7px;
+            width: 7px;
+        }
 
     }
-    .fullwidth-box:first-child .fusion-row {
-        p:first-child {
-            @include proxima-semibold();
-            font-size: 20px;
-            line-height: 30px;
-            color: #1f2122;
-            @media screen and (max-width: 800px) {
-                font-size: 18px;
-            }
-        }
-    }
+    
+        
 }

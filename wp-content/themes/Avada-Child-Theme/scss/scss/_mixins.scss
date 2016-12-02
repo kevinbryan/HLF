@@ -60,147 +60,20 @@ $path-ui-img: "../img/ui" !default;
   background-repeat: no-repeat;
 }
 
-
-
 // ---------------------------------------
-// WAVE
+// Media queries
 // ---------------------------------------
 
-@mixin wave {
-  @include sprite-bg;
-  @include size(7px, 100%);
-  content: '';
-  display: block;
-}
-
-@mixin wave--top {
-  position: relative;
-
-  &:before {
-    @include wave;
-    @include absolute(top 0 right 0 left 0);
+@mixin MQ($canvas) {
+  @if $canvas == S {
+   @media only screen and (min-width: $S) { @content; } 
   }
-
-}
-
-@mixin wave--bottom {
-  position: relative;
-
-  &:after {
-    @include wave;
-    @include absolute(bottom 0 right 0 left 0);
+  @else if $canvas == M {
+   @media only screen and (min-width: $M) { @content; } 
   }
-
-}
-
-// ---------------------------------------
-// CIRCLES
-// ---------------------------------------
-
-@mixin circles($size) {
-    @include inline-block-middle;
-    @include sprite-circles;
-    @include size($size, $size);
-    font-size:$font-large+px;
-    background-position: -$size 0;
-    color: $white;
-    line-height: $size;
-    margin-right: rem(10);
-    text-align: center;
-}
-
-// ---------------------------------------
-// GRUNG
-// ---------------------------------------
-
-@mixin grung {
-    @include sprite-grung;
-    @include size(4px, 100%);
-    @include content-block;
-    z-index: 1;
-}
-
-@mixin grung-bottom ($pos) {
-    position: relative;
-    &:after {
-        @include grung;
-        @include absolute(bottom 0 right 0 left 0);
-        background-position: $pos;
-    }
-}
-
-@mixin grung-top ($pos) {
-    position: relative;
-    &:before {
-        @include grung;
-        @include absolute(top 0 right 0 left 0);
-        @include rotate(180deg);
-        background-position: $pos;
-    }
-}
-
-
-
-
-// ---------------------------------------
-// GRUNG BOX
-// ---------------------------------------
-
-@mixin mask{
-    position: relative;
-
-    &:before {
-        @include absolute(top 0 right 0 bottom 0 left 0);
-        @include content-block;
-        background-repeat: no-repeat;
-        background-position: top center;        
-        background-size: 100% 100%;
-        z-index: 1;
-    }
-}
-
-@mixin mask-box--white{
-    @include mask;
-    &:before {
-        background-image: url(../img/ui/mask-grung-box-white.png);
-        background-image: url(../img/ui/mask-grung-box-white.svg);
-    }
-}
-@mixin mask-box--grey{
-    @include mask;
-    &:before {
-        background-image: url(../img/ui/mask-grung-box-grey.png);
-        background-image: url(../img/ui/mask-grung-box-grey.svg);
-    }
-}
-
-@mixin mask-box-small--white{
-    @include mask;
-    &:before {
-        background-image: url(../img/ui/mask-grung-box-small-white.png);
-        background-image: url(../img/ui/mask-grung-box-small-white.svg);
-    }
-}
-@mixin mask-box-small--grey{
-    @include mask;
-    &:before {
-        background-image: url(../img/ui/mask-grung-box-small-grey.png);
-        background-image: url(../img/ui/mask-grung-box-small-grey.svg);
-    }
-}
-@mixin mask-box-big--white{
-    @include mask;
-    &:before {
-        background-image: url(../img/ui/mask-grung-box-big-white.png);
-        background-image: url(../img/ui/mask-grung-box-big-white.svg);
-    }
-}
-@mixin mask-box-big--grey{
-    @include mask;
-    &:before {
-        background-image: url(../img/ui/mask-grung-box-big-grey.png);
-        background-image: url(../img/ui/mask-grung-box-big-grey.svg);
-    }
+  @else if $canvas == L {
+   @media only screen and (min-width: $L) { @content; } 
+  }
 }
 
 
@@ -229,27 +102,18 @@ $path-ui-img: "../img/ui" !default;
 //  Typography Mixins
 // ---------------------------
 
-// Include as: @include font(font-size,line-height,margin-bottom,context)
+// mixins - rem fallback - credits: http://zerosixthree.se/
 
-@mixin font($font-size,$line-height,$marg-bottom,$context:$font-base) {
-  font-size:  ($font-size / $context) * 1em;
-  line-height: decimal-round($line-height / $font-size);
-  @if $marg-bottom == null {}
-  @elseif $marg-bottom == 0 {margin-bottom:0}
-  @else { margin-bottom: ($marg-bottom / $font-size) * 1em}
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return $remSize * 1rem;
 }
 
-// Include as: @include border-bottom(border-size, border-style, border-color, padding-bottom, context)
-@mixin border-bottom($border-size,$border-style,$border-color,$padding-bottom, $context:$font-base) {
-      border-bottom:  ($border-size+px $border-style $border-color);
-      padding-bottom: ((($padding-bottom - $border-size ) / $context ) * 1em)
+@mixin font-size($size) {
+  font-size: $size;
+  font-size: calculateRem($size);
 }
 
-// Include as: @include border-top(border-size, border-style, border-color, padding-top, context)
-@mixin border-top($border-size,$border-style,$border-color,$padding-top,$context:$font-base) {
-      border-top:  ($border-size+px $border-style $border-color);
-      padding-top: ((($padding-top - $border-size ) / $context ) * 1em)
-}
 
 // ---------------------------------------
 // CLEARFIX
@@ -281,19 +145,6 @@ $path-ui-img: "../img/ui" !default;
   height: auto;
 }
 
-@mixin img-small {
-  max-width: 100%;
-  image-rendering: optimizequality;
-  width: 100%;
-  height: auto;
-  width: 140px;
-
-  @media screen and (max-width:$break-mobile) {
-    width: 125px;
-  }
-
-}
-
 // ---------------------------------------
 // WRAP
 // ---------------------------------------
@@ -305,36 +156,6 @@ $path-ui-img: "../img/ui" !default;
     margin-right: auto;
 }
 
-// ---------------------------------------
-// WRAP BORDER BOX
-// ---------------------------------------
-
-@mixin wrap--border-box {
-    padding-top:em(30);
-    padding-bottom:em(30);
-    background-color:$white;
-    border-bottom:2px solid $grey;
-    @media screen and (max-width:$break-small) {
-        padding-top:em(20);
-        padding-bottom:em(20);
-    }
-}
-
-// ---------------------------------------
-// FIGURE WRAP BOX
-// ---------------------------------------
-
-@mixin wrap--figure-box {
-    padding:em(20) em(30);
-    background-color:$white;
-    border-bottom:2px solid $grey;
-    margin-top:em(-30);
-    max-width: 700px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    position:relative;
-}
 
 // ---------------------------------------
 // Center-align a block level element
@@ -356,25 +177,6 @@ $path-ui-img: "../img/ui" !default;
 }
 @mixin square($size) {
     @include size($size, $size);
-}
-
-// ---------------------------------------
-// LIST LINK
-// ---------------------------------------
-
-@mixin list-link {
-  @include clearfix;
-
-  li,
-  dd {
-    display: inline;
-  }
-
-  a {
-    text-decoration: none;
-    float: left;
-  }
-
 }
 
 // ---------------------------------------
@@ -696,21 +498,6 @@ $path-ui-img: "../img/ui" !default;
 }
 
 // ---------------------------------------
-// Bacground Rgb
-// ---------------------------------------
-
-@mixin background-rgba($color, $alpha) {
-    $rgba: rgba($color, $alpha);
-    $ie-hex-str: ie-hex-str($rgba);
-    background-color: $rgba;
-
-    .lt-ie9 & {
-        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$ie-hex-str},endColorstr=#{$ie-hex-str});
-        zoom: 1;
-    }
-}
-
-// ---------------------------------------
 // Triangle generator
 // ---------------------------------------
 
@@ -737,6 +524,22 @@ $path-ui-img: "../img/ui" !default;
         border-width: $size 0 $size $size;
         border-color: transparent transparent transparent $colour;
     }
+}
+
+
+// TYPOGRAPHY
+
+@mixin font-berthold() {
+  font-family: Berthold, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+@mixin font-proxima() {
+  font-family: Proxima, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+@mixin font-proxima-semibold() {
+  font-family: Proxima-semibold, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+@mixin font-vervieine() {
+  font-family: Vervieine, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 // ---------------------------------------
@@ -781,58 +584,3 @@ $path-ui-img: "../img/ui" !default;
     white-space: nowrap;
 }
 
-
-
-// ---------------------------------------
-// Padding and margins
-// ---------------------------------------
-
-
-@mixin padd-bottom($size) {
-  padding-bottom: $size+px; 
-  padding-bottom: rem($size);
-}
-@mixin marg-bottom($size) {
-  margin-bottom: $size+px; 
-  margin-bottom: rem($size);
-}
-@mixin padd-top($size) {
-  padding-top: $size+px; 
-  padding-top: rem($size);
-}
-@mixin marg-top($size) {
-  margin-top: $size+px; 
-  margin-top: rem($size);
-}
-@mixin padd-left($size) {
-  padding-left: $size+px; 
-  padding-left: rem($size);
-}
-@mixin marg-left($size) {
-  margin-left: $size+px; 
-  margin-left: rem($size);
-}
-@mixin padd-right($size) {
-  padding-right: $size+px; 
-  padding-right: rem($size);
-}
-@mixin marg-right($size) {
-  margin-right: $size+px; 
-  margin-right: rem($size);
-}
-
-
-// TYPOGRAPHY
-
-@mixin font-berthold() {
-  font-family: Berthold, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
-@mixin font-proxima() {
-  font-family: Proxima, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
-@mixin font-proxima-semibold() {
-  font-family: Proxima-semibold, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
-@mixin font-vervieine() {
-  font-family: Vervieine, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
